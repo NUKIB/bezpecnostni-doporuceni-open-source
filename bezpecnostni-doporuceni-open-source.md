@@ -120,7 +120,7 @@ Znaky udržované knihovny (nemusí být splněny všechny):
 * bylo vydáno aspoň pět předchozích verzí.
 
 ### L.2 Preferovány jsou knihovny s bezpečným API
-Bezpečné API znamená, že knihovní funkce jsou automaticky ošetřeny před nebezpečným vstupem či výstupem a nebezpečné funkcionality jsou ve výchozím nastavení zakázány a vývojář je musí explicitně povolit (zjednodušeně řečeno – bezpečné použití je jednodušší než nebezpečné). Použití ověřené knihovny s bezpečným API by mělo být i preferováno před vlastní implementací.
+Bezpečné API znamená, že knihovní funkce jsou automaticky ošetřeny před nebezpečným vstupem či výstupem. Potenciálně nebezpečné funkcionality jsou ve výchozím nastavení zakázány a vývojář je musí explicitně povolit (zjednodušeně řečeno – bezpečné použití je jednodušší než nebezpečné). Použití ověřené knihovny s bezpečným API by mělo být i preferováno před vlastní implementací.
 
 Příklady knihoven s bezpečným API: 
 * Knihovna pro práci s databází automaticky escapuje vstupní parametry. 
@@ -193,7 +193,7 @@ Typy bezpečnostních testů:
 * Static Analysis Security Testing (SAST) - kontrola nedostatků zdrojového kódu nebo kompilovaného mezijazyka nebo binární komponenty. Hledá známé problematické vzory v kódu založené pouze na aplikační logice, nikoli na chování aplikace při jejím spuštění. SAST nepokrývá detekci zranitelností v business logice, problémy zavedené na více úrovních aplikace nebo třídy problémů vytvořené za běhu.
 * Dynamic Analysis Security Testing (DAST) - testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech kdy aplikace využívá externích volání webových služeb nebo Javascript knihoven uložených mimo repozitář kódu) 
 * Fuzzing - mnohonásobné variabilní generování nebo mutace dat a jejich předání funkcím zajišťujících syntaktickou analýzu na úrovni aplikačních dat (síťové protokoly, souborové, IPC). Dobré pokrytí kontroly kódu, zejména pro jazyky C a C++.
-* Software composition analysis (SCA) - zabývá se správou používání komponent s otevřeným zdrojovým kódem. Nástroje SCA provádějí automatické skenování kódové základny aplikace včetně souvisejících artefaktů, jako jsou kontejnery a registry, s cílem identifikovat všechny komponenty s otevřeným zdrojovým kódem, údaje o jejich souladu s licencemi a případné bezpečnostní zranitelnosti.
+* Software Composition Analysis (SCA) - zabývá se správou používání komponent s otevřeným zdrojovým kódem. Nástroje SCA provádějí automatické skenování kódové základny aplikace včetně souvisejících artefaktů, jako jsou kontejnery a registry, s cílem identifikovat všechny komponenty s otevřeným zdrojovým kódem, údaje o jejich souladu s licencemi a případné bezpečnostní zranitelnosti.
 
 ### CI.7: Je prováděna kontrola tajných identifikátorů ve zdrojovém kódu
 V rámci kontinuální integrace je použit nástroj, který detekuje, zda zdrojový kód neobsahuje známé soubory nebo řetězce, které obsahují přístupové údaje (např. hesla, tokeny pro přístup, soukromé SSH klíče apod, certifikáty se soukromým klíčem) v angličtině označované jako „secrets”. 
@@ -205,31 +205,31 @@ Příklady open-source nástrojů:
 * [Gitrob](https://github.com/michenriksen/gitrob)
 
 ### CI.8: Pro aplikace: Vydané verze jsou podepsány
-Vydané verze aplikací jsou kryptograficky podepsány, případně je alespoň zveřejněn hash (nejlépe SHA256) výsledného souboru. 
+Vydané verze aplikací jsou kryptograficky podepsány, případně je alespoň zveřejněn hash (nejlépe SHA-256) výsledného souboru. 
 
 ## Kryptografické prostředky
 Prakticky žádná aplikace se nevyhne používání kryptografických prostředlů ať už při komunikaci s ostatními systémy nebo při komunikaci uživatele s aplikací. Jelikož tvorba a implementace kryptografických algoritmů je složitá oblast náchylná na jakékoliv drobné chyby a v software s otevřeným zdrojovým kódem je pro případného útočníka snadnější tyto chyby nacházet, doporučujeme se vyvarovat návrhu či případně implementací vlastních algoritmů, a naopak využívat algoritmy z ověřených kryptografických knihoven. Tyto knihovny obvykle prochází pravidelnou kontrolou bezpečnostních výzkumníků a nalezené zranitelnosti jsou rychle opravovány.
 
-### C.1 Aplikace využívá ověřené kryptografické knihovny
-Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků je velmi složité. Proto v rámci aplikací jsou primárně využívaný kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz L.1).
+### C.1 Jsou využívány ověřené kryptografické knihovny
+Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků je velmi složité. Proto v aplikacích a knihovnách jsou primárně využívaný kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz L.1).
 
 Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u kódu je uvedeno, z jakého důvodu byla zvolena vlastní implementace.
 
-### C.2 Aplikace využívá odolné kryptografické prostředky
-V případě, že aplikace přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné. 
+### C.2 Jsou využívany odolné kryptografické prostředky
+V případě, že aplikace nebo knihovna přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné. 
 
 Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB. Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
 
 Jiný algoritmus může být použit jen v nezbytných případech (např. kvůli zpětné kompatibilitě nebo komunikaci s jiným systémem nepodporující odolný algoritmus).
 
 ### C.3 Při použití protokolu TLS je podporována alespoň verze 1.2
-V případě použití kryptografického protokolu TLS je podporována alespoň verze 1.2 a to jak při příchozím, tak odchozím spojení.
+V případě použití kryptografického protokolu TLS je podporována alespoň verze 1.2 a to jak při příchozím, tak odchozím spojení. Starší verze můžou být použity jen v nezbytných případech.
 
 ### C.4 Je prováděno ověřování použitého certifikátu
 Při navazování zabezpečeného odchozího spojení, kde se používá k ověření protistrany kryptografického certifikátu, je u toho certifikátu kontrolováno alespoň:
 * zda je podepsán důvěryhodnou certifikační autoritou,
 * zda není vypršený nebo naopak před dobou platnosti,
-* zda Common Name nebo Alternative DNS Names odpovídá použité doméně.
+* zda *Common Name* nebo *Alternative DNS Names* odpovídá použité doméně.
 
 Tyto kontroly jsou u většiny knihoven určených pro navazování zabezpečené komunikace zapnuty ve výchozím nastavení, vývojář by je proto měl vypínatat pouze v odůvodněných případech pro konkrétní spojení. Pro ověření kontrol certifikátů je možné použít například službu [badssl](https://badssl.com). Pokud knihovna tyto kontroly nepodporuje, je potřeba ji vyměnit za bezpečnější nebo kontroly provádět dodatečně ve vlastním kódu.
 
@@ -245,7 +245,7 @@ V případě, že aplikace pracuje s uživatelskými hesly a ukládá je do data
 * argon2 (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
 * scrypt – využívá hašovací algoritmus SHA-256, který je schválen
 * brypt – využívá blokovou šifru blowfish, která je dosluhující
-* pbkdf2 – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle K.2
+* pbkdf2 – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle C.2
 
 Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz C.8), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů). Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
 
