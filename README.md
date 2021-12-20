@@ -21,4 +21,4 @@ V současné době zveřejněná verze ještě není finální, ale je  připrav
 
 * Pokud jsou doporučovány konkrétní produkty, musí být vydány pod open-source licencí
 * Odkazováno je pouze na stránky výrobců technologií nebo na nekomerční zdroje
-* Příklady jsou uváděny jen pro následující programovací jazyky: JavaScript, Python, Java, C a C#
+* Příklady jsou uváděny jen pro následující programovací jazyky: JavaScript, Python, Java, C (včetně C++), C#, Go a Rust
