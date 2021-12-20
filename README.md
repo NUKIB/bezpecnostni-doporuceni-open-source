@@ -1,9 +1,9 @@
-<table border="0">
+<table>
   <tr>
     <td><img src="nukib.png" height="100" alt="Logo Národního úřadu pro kybernetickou a informační bezpečnost"></td>
-    <td><img src="mv.png" height="100" alt="Logo Ministerstva vnitra"></td>
+    <td><img src="mv.png#gh-light-mode-only" height="100" alt="Logo Ministerstva vnitra"><img src="mv-dark.png#gh-dark-mode-only" height="100" alt="Logo Ministerstva vnitra"></td>
   </tr>
-  </table>
+</table>
 
 # Bezpečnostní doporučení pro vývoj otevřeného software ve veřejné sféře
 
