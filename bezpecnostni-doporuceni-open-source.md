@@ -15,7 +15,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
 ### O.1 Před začátkem vývoje je zvážen výběr použitého jazyka a frameworku z hlediska bezpečnosti
 Pokud je projekt v přípravné fázi a teprve probíhá volba použitého jazyka a frameworku, jedním ze zvažovaných bodů by měla být taktéž bezpečnost použitých technologií. Z tohoto pohledu je vhodné preferovat moderní jazyky, které minimalizují problémy se zranitelnostmi na úrovni paměti (bez manuálního uvolňování paměti) a souběhů.
 
-Při výběru frameworku je vhodné preferovat ty, které splňují pravidla pro bezpečná API (viz bod L.2) a jejichž autoři garantují opravy bezpečnostních chyb u použité verze po akceptovatelnou dobu. V případě dlouhodobého projektu s dlouhou plánovanou životností je vhodné využít takové verze, které nabízí dlouhodobou podporu.
+Při výběru frameworku je vhodné preferovat ty, které splňují pravidla pro bezpečná API (viz [L.2](#l2-pro-aplikace-aplikace-umožňuje-logování-důležitých-akcí)) a jejichž autoři garantují opravy bezpečnostních chyb u použité verze po akceptovatelnou dobu. V případě dlouhodobého projektu s dlouhou plánovanou životností je vhodné využít takové verze, které nabízí dlouhodobou podporu.
 
 Budoucí změna jazyka, frameworku nebo jen aktualizace na novější hlavní verzi frameworku bývá často velmi nákladná a vyžaduje přepsání velké části aplikace.
 
@@ -28,7 +28,7 @@ Pokud nelze zdrojový kód zveřejnit už od začátku vývoje, vývojáři při
 Zdrojový kód je verzován v otevřeném repozitáři, ke kterému má přístup široká veřejnost. Jednotlivé změny („commity”) jsou logicky strukturované, aby mohly být zkoumány jak uživateli aplikace nebo knihovny, tak bezpečnostními výzkumníky. Změny, který mění bezpečnost systému (např. použitý kryptografický prostředek, opravení bezpečnostní chyby, změna způsobu autentizace apod.) jsou označeny a vysvětleny buď v popisu změny („commit message”) nebo v komentáři u zdrojového kódu.
 
 ### O.4 Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve
-Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Taktéž doporučujeme začleňovat vývojové větve do hlavní větve, jen pokud byla kontinuální integrace (viz sekce CI) úspěšná („zakázat merge, pokud neprojde CI”).
+Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Taktéž doporučujeme začleňovat vývojové větve do hlavní větve, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
 
 ### O.5 Součástí repozitáře je soubor SECURITY
 Soubor SECURITY obsahuje způsob, jakým mají být hlášeny bezpečnostní chyby. Doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem. Může také obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. V souboru uvedené informace jsou v anglickém jazyce, volitelně doplněné českou alternativou.
@@ -63,7 +63,7 @@ V rámci organizace spravující zdrojový kód v repozitáři je určena odpov�
 ### O.7 Nahlášené zranitelnosti jsou opraveny do 30 dnů
 Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace. U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
 
-V případě kritické zranitelnosti (např. RCE bez potřeby autentizace, [CVSS](https://owasp.org/www-community/Fuzzing) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravené verze dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
+V případě kritické zranitelnosti (např. RCE bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravené verze dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
 Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně PoC nebo je zneužití zranitelnosti primitivní, musí být opravena co možná nejdříve či zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
 
@@ -80,7 +80,7 @@ Všichni vývojáři, kteří mají práva:
 * vydávat nové verze,
 * spravovat uživatelské účty,
 
-používají dvoufaktorovou autentizaci do systému správce kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč (např. přes SSH), tento klíč využívá odolné kryptografické prostředky (viz K.2). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
+používají dvoufaktorovou autentizaci do systému správce kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč (např. přes SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
 
 Kryptografické podepisování jednotlivých změn kódu je doporučeno.
 
@@ -98,14 +98,14 @@ Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití)
 Pokud je knihovna zveřejněná ve veřejném správci balíčků, verze obsahující zranitelnosti jsou označeny jako zranitelné (pokud to správce balíčků umožňuje, obvyklý název této funkcionality je yanked) nebo jsou z něj odstraněny.
 
 ### O.13 Neudržované aplikace a knihovny jsou označeny
-Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá), je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz O.5).
+Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá), je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.5](#o5-součástí-repozitáře-je-soubor-security)).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
 
 ## Použité knihovny
 Moderní open-souce software je typický tím, že využívá velké množství knihoven s otevřeným zdrojovým kódem vyvíjených třetími stranami. Použití těchto knihoven šetří náklady na vývoj (není potřeba implementovat funkce, které již implementoval někdo jiný a svoji práci zveřejnil) a taktéž může zvyšovat bezpečnost (knihovna mohla být prověřena větším množstvím uživatelů).
 
-Zároveň ale začleňování kódu třetích stran přináší riziko v možné zranitelnosti v kódu těchto otevřených knihoven. K repozitáři s kódem může získat přístup útočník (např. hacknutím účtu správcce), který k legitimnímu kódu přidá škodlivý kód. Taktéž u populární knihovny existuje větší pravděpodobnost, že pro zranitelnost bude existovat zveřejněný způsob jejího zneužití a že bude potenciálními útočníky aktivně vyhledávána.
+Zároveň ale začleňování kódu třetích stran přináší riziko v možné zranitelnosti v kódu těchto otevřených knihoven. K repozitáři s kódem může získat přístup útočník (např. hacknutím účtu správce), který k legitimnímu kódu přidá škodlivý kód. Taktéž u populární knihovny existuje větší pravděpodobnost, že pro zranitelnost bude existovat zveřejněný způsob jejího zneužití a že bude potenciálními útočníky aktivně vyhledávána.
 
 Následující doporučení nezakazuje použití knihoven třetích stran, ale definuje pravidla, jejichž dodržení by mělo vést k minimalizaci existence zranitelnosti v použité knihovně a jejímu rychlému vyřešení.
 
@@ -140,7 +140,7 @@ Znaky knihovny, u nichž autoři dbají na bezpečnost:
 * Je prováděna kontinuální integrace (CI),
 * repozitář obsahuje soubor SECURITY,
 * veřejný seznam nahlášených *Issues* neobsahuje neopravené nahlášené zranitelnosti,
-* soubor changelog obsahuje nalezené bezpečnostní zranitelnosti,
+* soubor CHANGELOG obsahuje nalezené bezpečnostní zranitelnosti,
 * oprava nahlášených bezpečnostních chyb trvá méně než 30 dní,
 * nalezené zranitelnosti nejsou triviálního charakteru (případně nejsou obvyklé),
 * v rámci hledání zranitelností autoři používají technik [fuzzingu](https://owasp.org/www-community/Fuzzing).
@@ -179,7 +179,7 @@ Jakmile budou přijata rozhodnutí o použitých technologiích, musí být vytv
 
 Tento standard by měl mimo jiné obsahovat předpis (ne)povolených funkcí a kontrolu použitých funkcí dle použitého jazyka (Java, PHP, .NET), včetně doporučených ekvivalentů k těmto funkcím (některé jazyky používají nebezpečné funkce generované v rámci běhové prostředí a jsou zdrojem zranitelností).
 
-### CI.5: Jsou prováděny jednotkové nebo integrační testy v oblastech se vlivem na bezpečnost
+### CI.5: Jsou prováděny jednotkové nebo integrační testy v oblastech s vlivem na bezpečnost
 V rámci kontinuální integrace jsou prováděny jednotkové (unit) nebo integrační testy v oblastech kódu, které můžou mít vliv na bezpečnost systému. Mezi tyto oblasti patří zejména:
 
 * Autentizace do systému (autentizace se správným heslem, autentizace bez hesla, autentizace s neplatným heslem, autentizace zablokovaného uživatele atd.).
@@ -191,7 +191,7 @@ V rámci kontinuální integrace je použit nástroj, který zajistí základní
 
 Typy bezpečnostních testů:
 * Static Analysis Security Testing (SAST) - kontrola nedostatků zdrojového kódu nebo kompilovaného mezijazyka nebo binární komponenty. Hledá známé problematické vzory v kódu založené pouze na aplikační logice, nikoli na chování aplikace při jejím spuštění. SAST nepokrývá detekci zranitelností v business logice, problémů zavedenych na více úrovních aplikace nebo třídy problémů vytvořených za běhu.
-* Dynamic Analysis Security Testing (DAST) - testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech, kdy aplikace využívá externích volání webových služeb nebo Javascript knihoven uložených mimo repozitář kódu)
+* Dynamic Analysis Security Testing (DAST) - testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech, kdy aplikace využívá externích volání webových služeb nebo Javascript knihoven uložených mimo repozitář kódu).
 * Fuzzing - mnohonásobné variabilní generování nebo mutace dat a jejich předání funkcím zajišťujících syntaktickou analýzu na úrovni aplikačních dat (síťové protokoly, souborové, IPC). Dobré pokrytí kontroly kódu, zejména pro jazyky C a C++.
 * Software Composition Analysis (SCA) - zabývá se správou používání komponent s otevřeným zdrojovým kódem. Nástroje SCA provádějí automatické skenování kódové základny aplikace včetně souvisejících artefaktů, jako jsou kontejnery a registry, s cílem identifikovat všechny komponenty s otevřeným zdrojovým kódem, údaje o jejich souladu s licencemi a případné bezpečnostní zranitelnosti.
 
@@ -208,17 +208,17 @@ Příklady open-source nástrojů:
 Vydané verze aplikací jsou kryptograficky podepsány, případně je alespoň zveřejněn haš (nejlépe SHA-256) výsledného souboru.
 
 ## Kryptografické prostředky
-Prakticky žádná aplikace se nevyhne používání kryptografických prostředlů ať už při komunikaci s ostatními systémy nebo při komunikaci uživatele s aplikací. Jelikož tvorba a implementace kryptografických algoritmů je složitá oblast náchylná na jakékoliv drobné chyby a v softwaru s otevřeným zdrojovým kódem je pro případného útočníka snadnější tyto chyby nacházet, doporučujeme se vyvarovat návrhu či případně implementaci vlastních algoritmů, a naopak využívat algoritmy z ověřených kryptografických knihoven. Tyto knihovny obvykle prochází pravidelnou kontrolou bezpečnostních výzkumníků a nalezené zranitelnosti jsou rychle opravovány.
+Prakticky žádná aplikace se nevyhne používání kryptografických prostředků ať už při komunikaci s ostatními systémy nebo při komunikaci uživatele s aplikací. Jelikož tvorba a implementace kryptografických algoritmů je složitá oblast náchylná na jakékoliv drobné chyby a v softwaru s otevřeným zdrojovým kódem je pro případného útočníka snadnější tyto chyby nacházet, doporučujeme se vyvarovat návrhu či případně implementaci vlastních algoritmů, a naopak využívat algoritmy z ověřených kryptografických knihoven. Tyto knihovny obvykle prochází pravidelnou kontrolou bezpečnostních výzkumníků a nalezené zranitelnosti jsou rychle opravovány.
 
 ### C.1 Jsou využívány ověřené kryptografické knihovny
-Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků, je velmi složité. Proto v aplikacích a knihovnách jsou primárně využívány kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz L.1).
+Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků, je velmi složité. Proto v aplikacích a knihovnách jsou primárně využívány kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz [L.1](#l1-aplikace-a-knihovny-využívají-udržované-závislosti)).
 
 Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u kódu je uvedeno, z jakého důvodu byla zvolena vlastní implementace.
 
 ### C.2 Jsou využívány odolné kryptografické prostředky
 V případě, že aplikace nebo knihovna přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné.
 
-Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB. Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
+Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB. Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu, a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
 
 Jiný algoritmus může být použit jen v nezbytných případech (např. kvůli zpětné kompatibilitě nebo komunikaci s jiným systémem nepodporující odolný algoritmus).
 
@@ -245,14 +245,14 @@ V případě, že aplikace pracuje s uživatelskými hesly a ukládá je do data
 * argon2 (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
 * scrypt – využívá hašovací algoritmus SHA-256, který je schválen
 * brypt – využívá blokovou šifru blowfish, která je dosluhující
-* pbkdf2 – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle C.2
+* pbkdf2 – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)
 
-Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz C.8), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů). Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
+Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8](#c8-ke-generování-náhodných-tokenů-jsou-použity-kryptograficky-bezpečné-pseudonáhodné-generátory)), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů). Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
 
 ### C.7 Porovnání hašů uložených hesel je odolné na časovou analýzu
 Běžné porovnání řetězců je náchylné na časovou analýzu („timing attack”) – z důvodu optimalizace je porovnávání ukončeno při nalezení první neshody a doba porovnání je tedy závislá na uživatelském vstupu. Případný útočník může tímto způsobem odhadnout použité heslo.
 
-Odolné funkce jsou tedy takové, kdy porovnání trvá vždy stejnou dobu bez ohledu na použitý vstup. Není tedy možné využít běžné porovnáni (ve většině programovacích jazyků pomocí operátoru `==`), které porovnání ukončí po nalezení první neshody.
+Odolné funkce jsou tedy takové, kdy porovnání trvá vždy stejnou dobu bez ohledu na použitý vstup. Není tedy možné využít běžné porovnání (ve většině programovacích jazyků pomocí operátoru `==`), které porovnání ukončí po nalezení první neshody.
 
 Příklady odolných funkcí pro porovnání hašů:
 * PHP: [hash_equals](https://www.php.net/manual/en/function.hash-equals.php)
@@ -262,7 +262,7 @@ Příklady odolných funkcí pro porovnání hašů:
 Pokud je v aplikaci nebo knihovně generován náhodný token, je pro toto generování použit kryptograficky bezpečný pseudonáhodný generátor – tyto funkce jsou označované jako CSPRNG (cryptographically secure pseudorandom number generator) nebo CPRNG (cryptographic pseudorandom number generator). Mezi náhodné tokeny patří například:
 * přístupový klíč,
 * session ID,
-* kryptografická nonce (např. inicializační vektor nebo sůl při ukládání hesel – viz C.6),
+* kryptografická nonce (např. inicializační vektor nebo sůl při ukládání hesel – viz [C.6](#c6-uložená-hesla-jsou-odolná-proti-offline-útokům)),
 * identifikátor zaslaný na e-mail pro obnovu hesla,
 * prvotní heslo uživatele.
 
@@ -279,7 +279,7 @@ Datové struktury obsahující citlivá data (heslo, privátní klíč, session 
 Knihovny využívají standardní rozhraní pro zaznamenávání událostí dle použitého jazyka, případně dle použitého frameworku. Přímé logování do souboru či na standardní chybový výstup („stderr“) je možné jen, pokud není možné standardní rozhraní použít či neexistuje.
 
 ### L.2 Pro aplikace: Aplikace umožňuje logování důležitých akcí
-Aplikace zaznamenává důležité akce provedené administrátory, uživateli nebo samotným systémem. K inspiraci pro typy zaznamenávaných akcí a jejich obsahu je možné využít [§ 22 vyhlášky č. 82/2018 Sb.](https://www.zakonyprolidi.cz/cs/2018-82#p22)
+Aplikace zaznamenává důležité akce provedené administrátory, uživateli nebo samotným systémem. K inspiraci pro typy zaznamenávaných akcí a jejich obsahu je možné využít [§ 22 vyhlášky č. 82/2018 Sb](https://www.zakonyprolidi.cz/cs/2018-82#p22).
 
 ### L.3 Pro aplikace: Aplikace podporuje napojení na centrální log management
 Aplikace musí umožňovat napojení na centrální log management zasíláním strukturovaných informací vhodným obecně podporovaným standardem (např. syslog). Každý log záznam obsahuje minimálně následující informace (dle vyhlášky):
@@ -298,12 +298,12 @@ V žádné úrovni logování nejsou do log záznamů vkládány tajné identifi
 ### L.4 Výjimky jsou řízeny
 Systém musí podporovat řízení výjimek, kdy výjimkou se myslí libovolná chyba nebo neočekávané chování, které se vyskytne během vykonávání programu a je následně zpracováno a zároveň nedojde k neřízenému selhání běhu.
 
-V případě uživatelské aplikace, při vzniku chyby běhu programu, bude zobrazeno dialogové okno s identifikátorem chyby mající vazbu na log události aplikace, pod kterým je situace následně v lozích dohledatelná, přičemž musí existovat oddělení uživatelských hlášení od technických. Uživatelská hlášení nesmí obsahovat technické detaily (jako např. traceback), ale jen identifikátor, který odkazuje na jeho popis mimo systém. Opakované a známé chyby je vhodné opatřit kódem a smysluplným popisem, aby je chápal běžný uživatel systému. Volitelně jsou tyto chyby odesílány do centrálního systému pro správu výjimek.
+V případě uživatelské aplikace bude při vzniku chyby běhu programu zobrazeno dialogové okno s identifikátorem chyby mající vazbu na log události aplikace, pod kterým je situace následně v lozích dohledatelná, přičemž musí existovat oddělení uživatelských hlášení od technických. Uživatelská hlášení nesmí obsahovat technické detaily (jako např. traceback), ale jen identifikátor, který odkazuje na jeho popis mimo systém. Opakované a známé chyby je vhodné opatřit kódem a smysluplným popisem, aby je chápal běžný uživatel systému. Volitelně jsou tyto chyby odesílány do centrálního systému pro správu výjimek.
 
 V případě systému, který neinteraguje s uživatelem, jsou výjimky logovány či zaslány do centrálního systému pro správu výjimek.
 
 ## Relační databáze
-Následující body jsou relevantní pouze pokud aplikace využívá relační databázi pro ukládání dat a návrh databázového schématu je součástí aplikace. Tato pravidla cílí na zajištění integrity ukládaných dat a jednodušší přenositelnost dat do jiných systémů.
+Následující body jsou relevantní, pouze pokud aplikace využívá relační databázi pro ukládání dat a návrh databázového schématu je součástí aplikace. Tato pravidla cílí na zajištění integrity ukládaných dat a jednodušší přenositelnost dat do jiných systémů.
 
 ### D.1 Jsou využívány primární klíče
 Primární klíč je hodnota, která jednoznačně identifikuje uloženou entitu v databázi. Při smazání záznamu nesmí být tento identifikátor znovu použit a musí být na úrovní databáze zajištěno, že se v databázové tabulce vyskytuje pouze jednou.
