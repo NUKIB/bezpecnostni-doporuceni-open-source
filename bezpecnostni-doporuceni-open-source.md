@@ -31,13 +31,9 @@ Zdrojový kód je verzován v otevřeném repozitáři, ke kterému má přístu
 Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Taktéž doporučujeme začleňovat vývojové větve do hlavní větve, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
 
 ### O.5 Součástí repozitáře je soubor SECURITY
-Soubor SECURITY obsahuje způsob, jakým mají být hlášeny bezpečnostní chyby. Doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem. Může také obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. V souboru uvedené informace jsou v anglickém jazyce, volitelně doplněné českou alternativou.
+Soubor SECURITY obsažený v repozitáři je standardní způsob, jak informovat uživatele a bezpečnostní analytiky, jakým mají být hlášeny bezpečnostní chyby. Pro hlášení musí být využít neveřejný kanál (doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem). Soubor taktéž může obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. Tyto informace jsou uvedeny v anglickém jazyce, volitelně doplněné českou alternativou. Cílem opatření je zvýšit pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byli zveřejněny nebo zneužity.
 
-Cílem je informovat bezpečnostní výzkumníky a jiné vývojáře, jakým způsobem mají hlásit zranitelnosti a zvýšit tak pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byli zveřejněny nebo zneužity.
-
-V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `security.txt` obsahující informace dle standardu uvedeného na https://securitytxt.org/, který si každý správce může nahradit vlastním obsahem.
-
-Možná podoba souboru SECURITY:
+Příklad souboru SECURITY:
 
 ```
 ## Reporting security vulnerabilities 
@@ -57,15 +53,27 @@ V případě bezpečnostní zranitelnosti nás prosím přímo kontaktujte …, 
 Pokud hlásíte bezpečnostní zranitelnost, nezapomeňte uvést, jak chcete být zveřejněni v changelogu a zda jste již požádali o přidělení CVE. Pokud ne, zažádáme o přidělení CVE za vás.
 ```
 
+V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu uvedeného na https://securitytxt.org/, který si každý správce může nahradit vlastním obsahem.
+
+Příklad souboru `security.txt`:
+
+```
+Contact: mailto:cert@nukib.cz
+Expires: 2023-01-01T00:00:00.000Z
+Encryption: https://www.nukib.cz/download/kontakty/cert_pub.asc
+Preferred-Languages: cs, sk, en
+Hiring: http://kariera.nukib.cz/
+```
+
 ### O.6 Je určena osoba zodpovědná za nahlášené zranitelnosti
 V rámci organizace spravující zdrojový kód v repozitáři je určena odpovědná osoba, která bude reagovat na nahlášené zranitelnosti. V případě, že tato osoba nebude dostupná po delší dobu, je určen její zástup.
 
 ### O.7 Nahlášené zranitelnosti jsou opraveny do 30 dnů
 Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace. U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
 
-V případě kritické zranitelnosti (např. RCE bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravené verze dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
+V případě kritické zranitelnosti (např. RCE bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
-Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně PoC nebo je zneužití zranitelnosti primitivní, musí být opravena co možná nejdříve či zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
+Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti) nebo je zneužití zranitelnosti primitivní, musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
 
 ### O.8 Všechny opravené zranitelnosti jsou uvedeny v souboru se změnami
 Všechny zranitelnosti nahlášené i nalezené, např. interním penetračním testem či kontrolou kódu vývojářem, musí být uvedeny v souboru popisující provedené změny v jednotlivých verzích (typicky soubor CHANGELOG), který je součásti repozitáře.
