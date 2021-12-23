@@ -15,7 +15,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
 ### O.1 Před začátkem vývoje je zvážen výběr použitého jazyka a frameworku z hlediska bezpečnosti
 Pokud je projekt v přípravné fázi a teprve probíhá volba použitého jazyka a frameworku, jedním ze zvažovaných bodů by měla být taktéž bezpečnost použitých technologií. Z tohoto pohledu je vhodné preferovat moderní jazyky, které minimalizují problémy se zranitelnostmi na úrovni paměti (bez manuálního uvolňování paměti) a souběhů.
 
-Při výběru frameworku je vhodné preferovat ty, které splňují pravidla pro bezpečná API (viz [L.2](#l2-pro-aplikace-aplikace-umožňuje-logování-důležitých-akcí)) a jejichž autoři garantují opravy bezpečnostních chyb u použité verze po akceptovatelnou dobu. V případě dlouhodobého projektu s dlouhou plánovanou životností je vhodné využít takové verze, které nabízí dlouhodobou podporu.
+Při výběru frameworku je vhodné preferovat ty, které splňují pravidla pro bezpečná API (viz [D.2](#d2-preferovány-jsou-knihovny-s-bezpečným-api)) a jejichž autoři garantují opravy bezpečnostních chyb u použité verze po akceptovatelnou dobu. V případě dlouhodobého projektu s dlouhou plánovanou životností je vhodné využít takové verze, které nabízí dlouhodobou podporu.
 
 Budoucí změna jazyka, frameworku nebo jen aktualizace na novější hlavní verzi frameworku bývá často velmi nákladná a vyžaduje přepsání velké části aplikace.
 
@@ -117,7 +117,7 @@ Zároveň ale začleňování kódu třetích stran přináší riziko v možné
 
 Následující doporučení nezakazuje použití knihoven třetích stran, ale definuje pravidla, jejichž dodržení by mělo vést k minimalizaci existence zranitelnosti v použité knihovně a jejímu rychlému vyřešení.
 
-### L.1 Aplikace a knihovny využívají udržované závislosti
+### D.1 Aplikace a knihovny využívají udržované závislosti
 Pokud je využita externí závislost, musí být použity pouze knihovny a jejich verze, které jsou udržované, aby bylo sníženo riziko použití knihovny, která obsahuje zranitelnosti, které nikdo nebude řešit. Pokud aplikace závisí na neudržované knihovně, měla by být nahrazena novější, podporovanou verzí nebo její udržovanou alternativou.
 
 Znaky udržované knihovny (nemusí být splněny všechny):
@@ -127,7 +127,7 @@ Znaky udržované knihovny (nemusí být splněny všechny):
 * tvůrce knihovny deklaruje řešení nahlášených zranitelností,
 * bylo vydáno aspoň pět předchozích verzí.
 
-### L.2 Preferovány jsou knihovny s bezpečným API
+### D.2 Preferovány jsou knihovny s bezpečným API
 Bezpečné API znamená, že knihovní funkce jsou automaticky ošetřeny před nebezpečným vstupem či výstupem. Potenciálně nebezpečné funkcionality jsou ve výchozím nastavení zakázány a vývojář je musí explicitně povolit (zjednodušeně řečeno – bezpečné použití je jednodušší než nebezpečné). Použití ověřené knihovny s bezpečným API by mělo být i preferováno před vlastní implementací.
 
 Příklady knihoven s bezpečným API:
@@ -141,7 +141,7 @@ Příklady knihoven s nebezpečným API:
 
 [^1]: Problematická je např. deserializace v jazyce PHP pomocí funkce [unserialize](https://www.php.net/manual/en/function.unserialize.php) nebo Java Native Serialization.
 
-### L.3 Preferovány jsou knihovny, jejichž autoři „dbají na bezpečnost”
+### D.3 Preferovány jsou knihovny, jejichž autoři „dbají na bezpečnost”
 Při výběru knihovny by měly být preferovány ty, jejichž autoři dbají na bezpečnost vývoje.
 
 Znaky knihovny, u nichž autoři dbají na bezpečnost:
@@ -153,12 +153,12 @@ Znaky knihovny, u nichž autoři dbají na bezpečnost:
 * nalezené zranitelnosti nejsou triviálního charakteru (případně nejsou obvyklé),
 * v rámci hledání zranitelností autoři používají technik [fuzzingu](https://owasp.org/www-community/Fuzzing).
 
-### L.4 Pro aplikace: Aplikace při definování závislostí používají „lock file”
+### D.4 Pro aplikace: Aplikace při definování závislostí používají „lock file”
 Aplikace specifikuje přesné verze závislostí, se kterými byla testována, pokud to daný správce závislostí umožňuje. Cílem je zabránit využití novější a potenciálně podvržené verze závislostí, kdy útočník získá přístup k účtu správce knihovny a nahradí ji podvrženou verzí.
 
 V případě webové aplikace, která načítá knihovny z externích serverů (CDN) je k tomuto účelu možné použít technologii [SRI](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) (Subresource Integrity) podporovanou v moderních webových prohlížečích.
 
-### L.5 Závislosti jsou stahovány z důvěryhodných úložišť
+### D.5 Závislosti jsou stahovány z důvěryhodných úložišť
 Při výběru správců závislostí jsou preferováni takoví, kteří kontrolují integritu stahovaného balíčku pomocí podpisu tvůrce aplikace nebo alespoň pomocí haše. Pokud správce závislostí kontrolu integrity neumožňuje, závislosti jsou výhradně stahovány pomocí zabezpečeného kanálu (HTTPS, SSH apod.).
 
 Pokud je nutné využít nepublikovanou verzi knihovnu ze správce závislostí, je specifikován tag nebo identifikátor konkrétní změny („commitu”).
