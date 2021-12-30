@@ -249,7 +249,9 @@ Je taktéž možné použít jiný způsob ověření certifikátu, který zaru�
 Při kontrole, zda je certifikát podepsán důvěryhodnou certifikační autoritou je využíváno úložiště certifikátů operačního systému. Některé knihovny využívají svůj vlastní seznam důvěryhodných certifikačních autorit, to ale vede k jejich obtížné správě. V rámci aplikace je možné přidat další certifikační autoritu (např. interní používanou v rámci organizace).
 
 ### C.6 Uložená hesla jsou odolná proti offline útokům
-V případě, že aplikace pracuje s uživatelskými hesly a ukládá je do databáze či do souboru, uložená hesla musí být chráněna proti offline útokům (tzn. takovým způsobem, u kterého je výpočetně náročné z uloženého hesla získat původní heslo). K tomu doporučujeme využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
+Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními údaji a ukládá je do databáze či do souboru, uložená údaje musí být chráněna proti offline útokům (tzn. takovým způsobem, u kterého je výpočetně náročné z uloženého údaje získat původní údaj). 
+
+V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahešování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
 * argon2 (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
 * scrypt – využívá hašovací algoritmus SHA-256, který je schválen
 * brypt – využívá blokovou šifru blowfish, která je dosluhující
@@ -287,18 +289,28 @@ Datové struktury obsahující citlivá data (heslo, privátní klíč, session 
 Knihovny využívají standardní rozhraní pro zaznamenávání událostí dle použitého jazyka, případně dle použitého frameworku. Přímé logování do souboru či na standardní chybový výstup („stderr“) je možné jen, pokud není možné standardní rozhraní použít či neexistuje.
 
 ### L.2 Pro aplikace: Aplikace umožňuje logování důležitých akcí
-Aplikace zaznamenává důležité akce provedené administrátory, uživateli nebo samotným systémem. K inspiraci pro typy zaznamenávaných akcí a jejich obsahu je možné využít [§ 22 vyhlášky č. 82/2018 Sb](https://www.zakonyprolidi.cz/cs/2018-82#p22).
+Aplikace zaznamenává důležité události provedené administrátory, uživateli nebo samotným systémem. Pro inspiraci je možné využít § 22 [vyhlášky č. 82/2018 Sb.](https://www.nukib.cz/download/publikace/legislativa/vkb_82-2018sb.pdf), který definuje typy událostí, o kterých by měl být proveden záznam:
+
+1. přihlašování a odhlašování ke všem účtům, a to včetně neúspěšných pokusů,
+2. činnosti provedené administrátory,
+3. úspěšné i neúspěšné manipulace s účty, oprávněními a právy,
+4. neprovedení činnosti v důsledku nedostatku přístupových práv a oprávnění,
+5. činnosti uživatelů, které mohou mít vliv na bezpečnost informačního a komunikačního systému,
+6. zahájení a ukončení činnosti technických aktiv,
+7. kritické i chybové hlášení technických aktiv a
+8. přístupů k záznamům o událostech, pokusy o manipulaci se záznamy o událostech a změny nastavení nástrojů pro zaznamenávání událostí.
 
 ### L.3 Pro aplikace: Aplikace podporuje napojení na centrální log management
 Aplikace musí umožňovat napojení na centrální log management zasíláním strukturovaných informací vhodným obecně podporovaným standardem (např. syslog). Každý log záznam obsahuje minimálně následující informace (dle vyhlášky):
+
 1. datum a čas včetně specifikace časového pásma,
-2. typ činnosti,
+2. typ činnosti (viz L.2),
 3. identifikaci technického aktiva, které činnost zaznamenalo (např. hostname a název aplikace),
 4. jednoznačnou identifikaci účtu, pod kterým byla činnost provedena,
 5. jednoznačnou síťovou identifikaci zařízení původce (např. IP adresa) a
 6. úspěšnost nebo neúspěšnost činnosti.
 
-V případě webové aplikace je možné zvolit, z jakého zdroje je zvolena IP adresa, tak aby nebyla zaznamenána pouze IP adresa reverzní proxy.
+V případě webové aplikace je možné zvolit, z jakého zdroje je získávána IP adresa původce, tak aby nebyla zaznamenána pouze IP adresa reverzní proxy.
 
 ### L.3 Nejsou zaznamenávány tajné identifikátory
 V žádné úrovni logování nejsou do log záznamů vkládány tajné identifikátory (hesla, přístupové tokeny, privátní klíče apod.) – buď jsou z logování vynechány nebo nahrazeny bezvýznamovou hodnotou. Pokud je pro vývoj nutné mít k těmto tajným identifikátorům přístup, je potřeba toto logování povolit zvláštním parametrem (např. proměnnou prostředí). Taktéž je potřeba omezit logování osobních údajů, pokud nejsou nezbytné k zajištění bezpečnosti systému.
