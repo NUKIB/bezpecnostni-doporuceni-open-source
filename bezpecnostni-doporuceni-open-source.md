@@ -24,13 +24,7 @@ Zdrojový kód vyvíjené aplikace je zveřejněn v repozitáři co nejdříve, 
 
 Pokud nelze zdrojový kód zveřejnit už od začátku vývoje, vývojáři při vývoji musí pracovat stejně, jako by již byl veřejný. Tedy aby se v historii repozitáře neobjevily části, které měly zůstat neveřejné (přístupové klíče apod.).
 
-### O.3 Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři
-Zdrojový kód je verzován v otevřeném repozitáři, ke kterému má přístup široká veřejnost. Jednotlivé změny („commity”) jsou logicky strukturované, aby mohly být zkoumány jak uživateli aplikace nebo knihovny, tak bezpečnostními výzkumníky. Změny, který mění bezpečnost systému (např. použitý kryptografický prostředek, opravení bezpečnostní chyby, změna způsobu autentizace apod.) jsou označeny a vysvětleny buď v popisu změny („commit message”) nebo v komentáři u zdrojového kódu.
-
-### O.4 Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve
-Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Taktéž doporučujeme začleňovat vývojové větve do hlavní větve, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
-
-### O.5 Součástí repozitáře je soubor SECURITY
+### O.3 Součástí repozitáře je soubor SECURITY
 Soubor SECURITY obsažený v repozitáři je standardní způsob, jak informovat uživatele a bezpečnostní analytiky, jakým mají být hlášeny bezpečnostní chyby. Pro hlášení musí být využít neveřejný kanál (doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem). Soubor taktéž může obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. Tyto informace jsou uvedeny v anglickém jazyce, volitelně doplněné českou alternativou. Cílem opatření je zvýšit pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byli zveřejněny nebo zneužity.
 
 Příklad souboru SECURITY:
@@ -65,24 +59,24 @@ Preferred-Languages: cs, sk, en
 Hiring: http://kariera.nukib.cz/
 ```
 
-### O.6 Je určena osoba zodpovědná za nahlášené zranitelnosti
+### O.4 Je určena osoba zodpovědná za nahlášené zranitelnosti
 V rámci organizace spravující zdrojový kód v repozitáři je určena odpovědná osoba, která bude reagovat na nahlášené zranitelnosti. V případě, že tato osoba nebude dostupná po delší dobu, je určen její zástup.
 
-### O.7 Nahlášené zranitelnosti jsou opraveny do 30 dnů
+### O.5 Nahlášené zranitelnosti jsou opraveny do 30 dnů
 Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace. U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
 
 V případě kritické zranitelnosti (např. RCE bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
 Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti) nebo je zneužití zranitelnosti primitivní, musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
 
-### O.8 Všechny opravené zranitelnosti jsou uvedeny v souboru se změnami
+### O.6 Všechny opravené zranitelnosti jsou uvedeny v souboru se změnami
 Všechny zranitelnosti nahlášené i nalezené, např. interním penetračním testem či kontrolou kódu vývojářem, musí být uvedeny v souboru popisující provedené změny v jednotlivých verzích (typicky soubor CHANGELOG), který je součásti repozitáře.
 
 Pro závažné zranitelnosti (CVSS 7.0 a vyšší) je přiřazen kód [CVE](https://www.cve.org). Kód CVE je uveden v souboru se změnami.
 
 Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na https://cveform.mitre.org/
 
-### O.9 Účty vývojářů při autentizaci používají dvoufaktorovou autentizaci
+### O.7 Účty vývojářů při autentizaci používají dvoufaktorovou autentizaci
 Všichni vývojáři, kteří mají práva:
 * začleňovat nebo jinak měnit zdrojový kód v hlavní větvi repozitáře,
 * vydávat nové verze,
@@ -92,23 +86,39 @@ používají dvoufaktorovou autentizaci do systému správce kódu v případě,
 
 Kryptografické podepisování jednotlivých změn kódu je doporučeno.
 
-### O.10 Účty vývojářů jsou svázány s pracovní e-mailovou adresou
+### O.8 Účty vývojářů jsou svázány s pracovní e-mailovou adresou
 Všechny účty vývojářů v systému správce kódu, kteří mají práva začleňovat nebo jinak měnit zdrojový kód v hlavní větvi repozitáře,
 * vydávat nové verze,
 * spravovat uživatelské účty,
 
 jsou svázány s pracovní e-mailovou adresou vývojáře. Je možné taktéž využít jiného poskytovatele identit, pokud je tato identita svázána s pracovní e-mailovou schránkou.
 
-### O.11 Dokumentace je součástí repozitáře
+### O.9 Dokumentace je součástí repozitáře
 Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití) je součástí repozitáře a verzována spolu s kódem.
 
-### O.12 Pro knihovny: Zranitelné verze knihoven jsou označeny
+### O.10 Pro knihovny: Zranitelné verze knihoven jsou označeny
 Pokud je knihovna zveřejněná ve veřejném správci balíčků, verze obsahující zranitelnosti jsou označeny jako zranitelné (pokud to správce balíčků umožňuje, obvyklý název této funkcionality je yanked) nebo jsou z něj odstraněny.
 
-### O.13 Neudržované aplikace a knihovny jsou označeny
-Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá), je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.5](#o5-součástí-repozitáře-je-soubor-security)).
+### O.11 Neudržované aplikace a knihovny jsou označeny
+Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá), je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
+
+## Správa kódu
+
+### S.1 Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři
+Zdrojový kód je verzován v otevřeném repozitáři, ke kterému má přístup široká veřejnost. Jednotlivé změny („commity”) jsou logicky strukturované, aby mohly být zkoumány jak uživateli aplikace nebo knihovny, tak bezpečnostními výzkumníky. Změny, který mění bezpečnost systému (např. použitý kryptografický prostředek, opravení bezpečnostní chyby, změna způsobu autentizace apod.) jsou popsány buď v popisu změny („commit message”) nebo v komentáři u zdrojového kódu.
+
+### S.2 Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve
+Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Vývoj probíhá v oddělených větvích, které se následně začleňují do hlavní větve pomocí požadavků na začlenění do hlavní větve (v terminologii správců kódu *Pull request* nebo *Merge request*). Do hlavní vývojové větve je umožněn kód začlenit, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
+
+### S.3 Je prováděna kontrola kódu
+V případě knihoven nebo aplikací, na jejichž vývoji se podílí více vývojářů, požadavky na začlenění kódu, které mohou mít vliv na bezpečnost systému, podléhají kontrolou a schválení jiným vývojářem. 
+
+Pokud je umožněno do kódu přispívat vývojářům z řad veřejnosti, v případě požadavku na začlenění kódu od neznámého vývojáře je tato kontrola prováděna vždy.
+
+### S.4 Repozitář neobsahuje binární spustitelné soubory
+Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustitelných souborech (včetně zkompilovaných knihoven) umístěných v repozitáři. Pokud je to nezbytné, je k tomuto souboru alespoň přidán popis, odkud byl soubor získán nebo jak je možné jej sestavit.
 
 ## Použité knihovny
 Moderní open-souce software je typický tím, že využívá velké množství knihoven s otevřeným zdrojovým kódem vyvíjených třetími stranami. Použití těchto knihoven šetří náklady na vývoj (není potřeba implementovat funkce, které již implementoval někdo jiný a svoji práci zveřejnil) a taktéž může zvyšovat bezpečnost (knihovna mohla být prověřena větším množstvím uživatelů).
