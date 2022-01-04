@@ -260,7 +260,7 @@ Je taktéž možné použít jiný způsob ověření certifikátu, který zaru�
 Při kontrole, zda je certifikát podepsán důvěryhodnou certifikační autoritou je využíváno úložiště certifikátů operačního systému. Některé knihovny využívají svůj vlastní seznam důvěryhodných certifikačních autorit, to ale vede k jejich obtížné správě. V rámci aplikace je možné přidat další certifikační autoritu (např. interní používanou v rámci organizace).
 
 ### C.6 Uložená hesla jsou odolná proti offline útokům
-Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními údaji a ukládá je do databáze či do souboru, uložená údaje musí být chráněna proti offline útokům (tzn. takovým způsobem, u kterého je výpočetně náročné z uloženého údaje získat původní údaj). 
+Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními údaji a ukládá je do databáze či do souboru, uložené údaje musí být chráněny proti offline útokům (tzn. musí být uloženy v takové formě, u které je výpočetně náročné i se znalostí uložených údajů získat údaje původní).
 
 V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahešování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
 * argon2 (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
