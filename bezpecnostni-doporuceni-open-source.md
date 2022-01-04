@@ -82,7 +82,7 @@ Všichni vývojáři, kteří mají práva:
 * vydávat nové verze,
 * spravovat uživatelské účty,
 
-používají vícefaktorovou autentizaci do systému správce kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč (např. přes SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
+používají vícefaktorovou autentizaci s nejméně dvěma různými typy faktorů pro přístup do systému správy kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč (např. SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
 
 Kryptografické podepisování jednotlivých změn kódu je doporučeno.
 
