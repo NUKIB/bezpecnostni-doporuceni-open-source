@@ -76,13 +76,13 @@ Pro závažné zranitelnosti (CVSS 7.0 a vyšší) je přiřazen kód [CVE](http
 
 Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na https://cveform.mitre.org/
 
-### O.7 Účty vývojářů při autentizaci používají dvoufaktorovou autentizaci
+### O.7 Účty vývojářů při autentizaci používají vícefaktorovou autentizaci
 Všichni vývojáři, kteří mají práva:
 * začleňovat nebo jinak měnit zdrojový kód v hlavní větvi repozitáře,
 * vydávat nové verze,
 * spravovat uživatelské účty,
 
-používají dvoufaktorovou autentizaci do systému správce kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč (např. přes SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
+používají vícefaktorovou autentizaci do systému správce kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč (např. přes SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
 
 Kryptografické podepisování jednotlivých změn kódu je doporučeno.
 
@@ -262,7 +262,7 @@ Při kontrole, zda je certifikát podepsán důvěryhodnou certifikační autori
 ### C.6 Uložená hesla jsou odolná proti offline útokům
 Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními údaji a ukládá je do databáze či do souboru, uložená údaje musí být chráněna proti offline útokům (tzn. takovým způsobem, u kterého je výpočetně náročné z uloženého údaje získat původní údaj). 
 
-V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahešování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
+V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahašování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
 * argon2 (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
 * scrypt – využívá hašovací algoritmus SHA-256, který je schválen
 * brypt – využívá blokovou šifru blowfish, která je dosluhující
