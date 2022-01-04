@@ -183,6 +183,7 @@ Před každým sestavení aplikace je kontrolováno, zda použité závislosti n
 V případě potřeby výjimky (např. uvedená zranitelnost není relevantní pro konkrétní použití), musí být tato výjimka zdokumentována.
 
 Příklady open-source nástrojů pro kontrolu závislostí:
+* Pro PHP: [Local PHP Security Checker](https://github.com/fabpot/local-php-security-checker)
 * Pro Python: [Safety](https://pypi.org/project/safety/)
 * Pro Rust: [Cargo audit](https://github.com/rustsec/rustsec)
 
