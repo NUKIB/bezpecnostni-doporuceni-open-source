@@ -8,7 +8,7 @@ Na druhou stranu ale je kód otevřen i případným útočníkům a to zjednodu
 
 Proto, pokud se organizace rozhodne zveřejnit zdrojový kód, měla by si zvážit možné přínosy a taktéž rizika z toho plynoucí. Pro snížení možných rizik slouží taktéž toto bezpečnostní doporučení. Jeho cílem je snížit množství potenciálních zranitelností („secure by design“) a v případě, že se v kódu nějaká zranitelnost objeví, tak aby byla co nejdříve opravena.
 
-Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou bezpečnostní ve veřejné správě nebo společnostem dodávajícím veřejné správně software. Všechna doporučení jsou nezávazná a je na organizaci, které z nich a v jaké míře bude u svých projektů využívat.
+Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou bezpečnostní ve veřejné správě nebo společnostem dodávajícím veřejné správě software. Všechna doporučení jsou nezávazná a je na organizaci, které z nich a v jaké míře bude u svých projektů využívat.
 
 ## Organizační opatření
 
