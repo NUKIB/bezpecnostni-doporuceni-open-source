@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-# Bezpečnostní doporučení pro vývoj otevřeného software ve veřejné sféře
+# Bezpečnostní doporučení pro vývoj otevřeného software ve veřejné správě
 
 [Národní úřad pro kybernetickou a informační bezpečnost](https://www.nukib.cz) ve spolupráci s [Ministerstvem vnitra](https://www.mvcr.cz) připravil bezpečnostní doporučení, které může veřejná správa využít, pokud se rozhodne zveřejnit vyvíjený software pod open source licencí.
 
