@@ -2,7 +2,7 @@
 
 *Verze: 0.1*
 
-Software s otevřeným kódem přináší určité bezpečnostní výhody. Hůře se v něm skrývají záměrné „zadní vrátka“, kód může procházet více bezpečnostních analytiků, a tak odhalit i méně zjevné zranitelnosti a taktéž obvykle tvůrci otevřeného kódu si dávají více záležet na jeho kvalitě z důvodu možného reputačního rizika.
+Software s otevřeným kódem přináší určité bezpečnostní výhody. Hůře se v něm skrývají záměrná „zadní vrátka“. Kód může procházet více bezpečnostních analytiků, a tak odhalit i méně zjevné zranitelnosti. Tvůrci otevřeného kódu si obvykle dávají více záležet na jeho kvalitě z důvodu možného reputačního rizika.
 
 Na druhou stranu ale je kód otevřen i případným útočníkům a to zjednodušuje jejich práci. Například u serverové aplikace si můžou ještě před zneužitím přesně ověřit, zda je zranitelnost zneužitelná a jak ji zneužít s co nejmenší pozorností monitorovacích nástrojů.
 
@@ -56,7 +56,7 @@ Contact: mailto:cert@nukib.cz
 Expires: 2023-01-01T00:00:00.000Z
 Encryption: https://www.nukib.cz/download/kontakty/cert_pub.asc
 Preferred-Languages: cs, sk, en
-Hiring: http://kariera.nukib.cz/
+Hiring: https://kariera.nukib.cz/
 ```
 
 ### O.4 Je určena osoba zodpovědná za nahlášené zranitelnosti
@@ -97,7 +97,7 @@ jsou svázány s pracovní e-mailovou adresou vývojáře. Je možné taktéž v
 Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití) je součástí repozitáře a verzována spolu s kódem.
 
 ### O.10 Pro knihovny: Zranitelné verze knihoven jsou označeny
-Pokud je knihovna zveřejněná ve veřejném správci balíčků, verze obsahující zranitelnosti jsou označeny jako zranitelné (pokud to správce balíčků umožňuje, obvyklý název této funkcionality je yanked) nebo jsou z něj odstraněny.
+Pokud je knihovna zveřejněna ve veřejném správci balíčků, verze obsahující zranitelnosti jsou označeny jako zranitelné (pokud to správce balíčků umožňuje, obvyklý název této funkcionality je yanked) nebo jsou z něj odstraněny.
 
 ### O.11 Neudržované aplikace a knihovny jsou označeny
 Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá), je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
@@ -208,10 +208,10 @@ V rámci kontinuální integrace jsou prováděny jednotkové (unit) nebo integr
 V rámci kontinuální integrace je použit nástroj, který zajistí základní bezpečnostní testy. Typ nástroje je volen dle použitého jazyka, frameworku a typu knihovny nebo aplikace. Jedná se například o nástroje na statickou analýzu kódu, aktivní skener bezpečnostních zranitelností (TODO: Nessus), v případě aplikace pracující s uživatelským vstupem fuzzer. Jelikož doba běhu některých nástrojů může být neúměrně dlouhá, je možné některé testy spouštět jen před plánovaným vydáním nové verze.
 
 Typy bezpečnostních testů:
-* Static Analysis Security Testing (SAST) - kontrola nedostatků zdrojového kódu nebo kompilovaného mezijazyka nebo binární komponenty. Hledá známé problematické vzory v kódu založené pouze na aplikační logice, nikoli na chování aplikace při jejím spuštění. SAST nepokrývá detekci zranitelností v business logice, problémů zavedenych na více úrovních aplikace nebo třídy problémů vytvořených za běhu.
-* Dynamic Analysis Security Testing (DAST) - testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech, kdy aplikace využívá externích volání webových služeb nebo Javascript knihoven uložených mimo repozitář kódu).
-* Fuzzing - mnohonásobné variabilní generování nebo mutace dat a jejich předání funkcím zajišťujících syntaktickou analýzu na úrovni aplikačních dat (síťové protokoly, souborové, IPC). Dobré pokrytí kontroly kódu, zejména pro jazyky C a C++.
-* Software Composition Analysis (SCA) - zabývá se správou používání komponent s otevřeným zdrojovým kódem. Nástroje SCA provádějí automatické skenování kódové základny aplikace včetně souvisejících artefaktů, jako jsou kontejnery a registry, s cílem identifikovat všechny komponenty s otevřeným zdrojovým kódem, údaje o jejich souladu s licencemi a případné bezpečnostní zranitelnosti.
+* Static Analysis Security Testing (SAST) – kontrola nedostatků zdrojového kódu nebo kompilovaného mezijazyka nebo binární komponenty. Hledá známé problematické vzory v kódu založené pouze na aplikační logice, nikoli na chování aplikace při jejím spuštění. SAST nepokrývá detekci zranitelností v business logice, problémů zavedených na více úrovních aplikace nebo třídy problémů vytvořených za běhu.
+* Dynamic Analysis Security Testing (DAST) – testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech, kdy aplikace využívá externích volání webových služeb nebo Javascript knihoven uložených mimo repozitář kódu).
+* Fuzzing – mnohonásobné variabilní generování nebo mutace dat a jejich předání funkcím zajišťujících syntaktickou analýzu na úrovni aplikačních dat (síťové protokoly, souborové, IPC). Dobré pokrytí kontroly kódu, zejména pro jazyky C a C++.
+* Software Composition Analysis (SCA) – zabývá se správou používání komponent s otevřeným zdrojovým kódem. Nástroje SCA provádějí automatické skenování kódové základny aplikace včetně souvisejících artefaktů, jako jsou kontejnery a registry, s cílem identifikovat všechny komponenty s otevřeným zdrojovým kódem, údaje o jejich souladu s licencemi a případné bezpečnostní zranitelnosti.
 
 ### CI.7: Je prováděna kontrola tajných identifikátorů ve zdrojovém kódu
 V rámci kontinuální integrace je použit nástroj, který detekuje, zda zdrojový kód neobsahuje známé soubory nebo řetězce, které obsahují přístupové údaje (např. hesla, tokeny pro přístup, soukromé SSH klíče, certifikáty se soukromým klíčem apod.) v angličtině označované jako „secrets”.
@@ -338,7 +338,7 @@ Následující body jsou relevantní, pouze pokud aplikace využívá relační 
 ### D.1 Jsou využívány primární klíče
 Primární klíč je hodnota, která jednoznačně identifikuje uloženou entitu v databázi. Při smazání záznamu nesmí být tento identifikátor znovu použit a musí být na úrovní databáze zajištěno, že se v databázové tabulce vyskytuje pouze jednou.
 
-### D.2 Jsou používány cizí klíče při vazbě na číselníkového hodnoty anebo na jiné entity
+### D.2 Jsou používány cizí klíče při vazbě na číselníkové hodnoty anebo na jiné entity
 Při vazbě jedné entity na druhou jsou využívány cizí klíče, aby byla zajištěna integrita záznamů, tedy že jedna entita nebude odkazovat na neexistující entitu.
 
 ### D.3 V rámci databáze jsou kontrolovány hodnoty parametrů („constraints”)
