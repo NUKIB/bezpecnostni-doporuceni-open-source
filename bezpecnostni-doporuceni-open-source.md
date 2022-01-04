@@ -263,10 +263,10 @@ Při kontrole, zda je certifikát podepsán důvěryhodnou certifikační autori
 Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními údaji a ukládá je do databáze či do souboru, uložené údaje musí být chráněny proti offline útokům (tzn. musí být uloženy v takové formě, u které je výpočetně náročné i se znalostí uložených údajů získat údaje původní).
 
 V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahašování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
-* argon2 (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
-* scrypt – využívá hašovací algoritmus SHA-256, který je schválen
+* [Argon2](https://datatracker.ietf.org/doc/html/rfc9106) (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
+* [scrypt](https://datatracker.ietf.org/doc/html/rfc7914) – využívá hašovací algoritmus SHA-256, který je schválen
 * bcrypt – využívá blokovou šifru blowfish, která je dosluhující
-* pbkdf2 – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)
+* [PBKDF2](https://datatracker.ietf.org/doc/html/rfc8018) – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)
 
 Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8](#c8-ke-generování-náhodných-tokenů-jsou-použity-kryptograficky-bezpečné-pseudonáhodné-generátory)), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů). Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
 
