@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD041 -->
 <table>
   <tr>
     <td><img src="nukib.png" height="100" alt="Logo Národního úřadu pro kybernetickou a informační bezpečnost"></td>
@@ -15,10 +16,11 @@
 
 ## Jak přispívat
 
-V současné době zveřejněná verze ještě není finální, ale je  připravena k připomínkám veřejné správy, dodavatelů software pro veřejnou správu a odborné veřejnosti. Připomínky k doporučení můžete přidávat pomocí [Issues](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/issues) nebo přímo návrhem změny doporučení pomocí [Pull requestu](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/edit/main/bezpecnostni-doporuceni-open-source.md) a to do 31. ledna 2022. Vydání finální verze doporučení je plánováno v březnu 2022.
+V současné době zveřejněná verze ještě není finální, ale je  připravena k připomínkám veřejné správy, dodavatelů software pro veřejnou správu a odborné veřejnosti.
+Připomínky k doporučení můžete přidávat pomocí [Issues](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/issues) nebo přímo návrhem změny doporučení pomocí [Pull requestu](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/edit/main/bezpecnostni-doporuceni-open-source.md) a to do 31. ledna 2022. Vydání finální verze doporučení je plánováno v březnu 2022.
 
 ### Obecná pravidla dokumentu
 
-* Pokud jsou doporučovány konkrétní produkty, musí být vydány pod open-source licencí
-* Odkazováno je pouze na stránky výrobců technologií nebo na nekomerční zdroje
-* Příklady jsou uváděny jen pro následující programovací jazyky: JavaScript, Python, Java, C (včetně C++), C#, Go a Rust
+* Pokud jsou doporučovány konkrétní produkty, musí být vydány pod open-source licencí.
+* Odkazováno je pouze na stránky výrobců technologií nebo na nekomerční zdroje.
+* Příklady jsou uváděny jen pro následující programovací jazyky: JavaScript, Python, Java, C (včetně C++), C#, Go a Rust.
