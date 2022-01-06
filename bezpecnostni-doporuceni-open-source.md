@@ -25,11 +25,13 @@ Zdrojový kód vyvíjené aplikace je zveřejněn v repozitáři co nejdříve, 
 Pokud nelze zdrojový kód zveřejnit už od začátku vývoje, vývojáři při vývoji musí pracovat stejně, jako by již byl veřejný. Tedy aby se v historii repozitáře neobjevily části, které měly zůstat neveřejné (přístupové klíče apod.).
 
 ### O.3 Součástí repozitáře je soubor SECURITY
-Soubor SECURITY obsažený v repozitáři je standardní způsob, jak informovat uživatele a bezpečnostní analytiky, jakým mají být hlášeny bezpečnostní chyby. Pro hlášení musí být využit neveřejný kanál (doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem). V případě e-mailu by se mělo jednat o ne-jmenný kontakt (například `security@organizace.cz`) pro zajištění funkčnosti i v případě změny pracovníků.  Soubor taktéž může obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. Tyto informace jsou uvedeny v anglickém jazyce, volitelně doplněné českou alternativou. Cílem opatření je zvýšit pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byli zveřejněny nebo zneužity.
+Soubor SECURITY obsažený v repozitáři je standardní způsob, jak informovat uživatele a bezpečnostní analytiky, jakým mají být hlášeny bezpečnostní chyby. Pro hlášení musí být využit neveřejný kanál (doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem).
+V případě e-mailu by se mělo jednat o ne-jmenný kontakt (například `security@organizace.cz`) pro zajištění funkčnosti i v případě změny pracovníků. Soubor taktéž může obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. Tyto informace jsou uvedeny v anglickém jazyce, volitelně doplněné českou alternativou.
+Cílem opatření je zvýšit pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byli zveřejněny nebo zneužity.
 
 Příklad souboru SECURITY:
 
-```
+```text
 ## Reporting security vulnerabilities 
 
 Reporting security vulnerabilities is of great importance for us, as this project is used in critical infrastructure. 
@@ -47,11 +49,11 @@ V případě bezpečnostní zranitelnosti nás prosím přímo kontaktujte …, 
 Pokud hlásíte bezpečnostní zranitelnost, nezapomeňte uvést, jak chcete být zveřejněni v changelogu a zda jste již požádali o přidělení CVE. Pokud ne, zažádáme o přidělení CVE za vás.
 ```
 
-V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu uvedeného na https://securitytxt.org/, který si každý správce může nahradit vlastním obsahem.
+V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu uvedeného na [securitytxt.org](https://securitytxt.org/), který si každý správce může nahradit vlastním obsahem.
 
 Příklad souboru `security.txt`:
 
-```
+```text
 Contact: mailto:cert@nukib.cz
 Expires: 2023-01-01T00:00:00.000Z
 Encryption: https://www.nukib.cz/download/kontakty/cert_pub.asc
@@ -63,7 +65,8 @@ Hiring: https://kariera.nukib.cz/
 V rámci organizace spravující zdrojový kód v repozitáři je určena odpovědná osoba, která bude reagovat na nahlášené zranitelnosti. V případě, že tato osoba nebude dostupná po delší dobu, je určen její zástup. Na tyto osoby by měla být směřována e-mailová adresa uvedená v souboru `SECURITY` a `security.txt`.
 
 ### O.5 Nahlášené zranitelnosti jsou opraveny do 30 dnů
-Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace. U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
+Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace.
+U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
 
 V případě kritické zranitelnosti (např. RCE zneužitelné bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
@@ -74,7 +77,7 @@ Všechny zranitelnosti nahlášené i nalezené, např. interním penetračním 
 
 Pro závažné zranitelnosti (CVSS 7.0 a vyšší) je přiřazen kód [CVE](https://www.cve.org). Kód CVE je uveden v souboru se změnami.
 
-Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na https://cveform.mitre.org/
+Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na [cveform.mitre.org](https://cveform.mitre.org/).
 
 ### O.7 Účty vývojářů při autentizaci používají vícefaktorovou autentizaci
 Všichni vývojáři, kteří mají práva:
@@ -82,7 +85,8 @@ Všichni vývojáři, kteří mají práva:
 * vydávat nové verze,
 * spravovat uživatelské účty,
 
-používají vícefaktorovou autentizaci s nejméně dvěma různými typy faktorů pro přístup do systému správy kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému. Pokud je použit přístup přes kryptografický klíč, např. při přístupu pomocí Secure Shell (SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
+používají vícefaktorovou autentizaci s nejméně dvěma různými typy faktorů pro přístup do systému správy kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému.
+Pokud je použit přístup přes kryptografický klíč, např. při přístupu pomocí Secure Shell (SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
 
 Kryptografické podepisování jednotlivých změn kódu je doporučeno.
 
@@ -100,20 +104,23 @@ Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití)
 Pokud je knihovna zveřejněna ve veřejném správci balíčků, verze obsahující zranitelnosti jsou označeny jako zranitelné (pokud to správce balíčků umožňuje, obvyklý název této funkcionality je yanked) nebo jsou z něj odstraněny.
 
 ### O.11 Neudržované aplikace a knihovny jsou označeny
-Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá), je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
+Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá),
+je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
 
 ## Správa kódu
 
 ### S.1 Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři
-Zdrojový kód je verzován v otevřeném repozitáři, ke kterému má přístup široká veřejnost. Jednotlivé změny („commity”) jsou logicky strukturované, aby mohly být zkoumány jak uživateli aplikace nebo knihovny, tak bezpečnostními výzkumníky. Změny, který mění bezpečnost systému (např. použitý kryptografický prostředek, opravení bezpečnostní chyby, změna způsobu autentizace apod.) jsou popsány buď v popisu změny („commit message”) nebo v komentáři u zdrojového kódu.
+Zdrojový kód je verzován v otevřeném repozitáři, ke kterému má přístup široká veřejnost. Jednotlivé změny („commity”) jsou logicky strukturované, aby mohly být zkoumány jak uživateli aplikace nebo knihovny, tak bezpečnostními výzkumníky.
+Změny, který mění bezpečnost systému (např. použitý kryptografický prostředek, opravení bezpečnostní chyby, změna způsobu autentizace apod.) jsou popsány buď v popisu změny („commit message”) nebo v komentáři u zdrojového kódu.
 
 ### S.2 Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve
-Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Vývoj probíhá v oddělených větvích, které se následně začleňují do hlavní větve pomocí požadavků na začlenění do hlavní větve (v terminologii správců kódu *Pull request* nebo *Merge request*). Do hlavní vývojové větve je umožněn kód začlenit, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
+Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Vývoj probíhá v oddělených větvích, které se následně začleňují do hlavní větve pomocí požadavků na začlenění do hlavní větve (v terminologii správců kódu *Pull request* nebo *Merge request*).
+Do hlavní vývojové větve je umožněn kód začlenit, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
 
 ### S.3 Je prováděna kontrola kódu
-V případě knihoven nebo aplikací, na jejichž vývoji se podílí více vývojářů, požadavky na začlenění kódu, které mohou mít vliv na bezpečnost systému, podléhají kontrolou a schválení jiným vývojářem. 
+V případě knihoven nebo aplikací, na jejichž vývoji se podílí více vývojářů, požadavky na začlenění kódu, které mohou mít vliv na bezpečnost systému, podléhají kontrolou a schválení jiným vývojářem.
 
 Pokud je umožněno do kódu přispívat vývojářům z řad veřejnosti, v případě požadavku na začlenění kódu od neznámého vývojáře je tato kontrola prováděna vždy.
 
@@ -123,7 +130,8 @@ Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustiteln
 ## Použité knihovny
 Moderní open-source software je typický tím, že využívá velké množství knihoven s otevřeným zdrojovým kódem vyvíjených třetími stranami. Použití těchto knihoven šetří náklady na vývoj (není potřeba implementovat funkce, které již implementoval někdo jiný a svoji práci zveřejnil) a taktéž může zvyšovat bezpečnost (knihovna mohla být prověřena větším množstvím uživatelů).
 
-Zároveň ale začleňování kódu třetích stran přináší riziko v možné zranitelnosti v kódu těchto otevřených knihoven. K repozitáři s kódem může získat přístup útočník např. převzetím tzv. „hacknutím” účtu správce, načež k legitimnímu kódu přidá škodlivý kód. Taktéž u populární knihovny existuje větší pravděpodobnost, že pro zranitelnost bude existovat zveřejněný způsob jejího zneužití a že bude potenciálními útočníky aktivně vyhledávána.
+Zároveň ale začleňování kódu třetích stran přináší riziko v možné zranitelnosti v kódu těchto otevřených knihoven. K repozitáři s kódem může získat přístup útočník např. převzetím tzv. „hacknutím” účtu správce, načež k legitimnímu kódu přidá škodlivý kód.
+Taktéž u populární knihovny existuje větší pravděpodobnost, že pro zranitelnost bude existovat zveřejněný způsob jejího zneužití a že bude potenciálními útočníky aktivně vyhledávána.
 
 Následující doporučení nezakazuje použití knihoven třetích stran, ale definuje pravidla, jejichž dodržení by mělo vést k minimalizaci existence zranitelnosti v použité knihovně a jejímu rychlému vyřešení.
 
@@ -206,11 +214,12 @@ V rámci kontinuální integrace jsou prováděny jednotkové (unit) nebo integr
 * Použití kryptografických knihoven.
 
 ### CI.6: Jsou prováděny automatizované bezpečnostní testy
-V rámci kontinuální integrace je použit nástroj, který zajistí základní bezpečnostní testy. Typ nástroje je volen dle použitého jazyka, frameworku a typu knihovny nebo aplikace. Jedná se například o nástroje na statickou analýzu kódu, aktivní skener bezpečnostních zranitelností, v případě aplikace pracující s uživatelským vstupem fuzzer. Jelikož doba běhu některých nástrojů může být neúměrně dlouhá, je možné některé testy spouštět jen před plánovaným vydáním nové verze.
+V rámci kontinuální integrace je použit nástroj, který zajistí základní bezpečnostní testy. Typ nástroje je volen dle použitého jazyka, frameworku a typu knihovny nebo aplikace. Jedná se například o nástroje na statickou analýzu kódu, aktivní skener bezpečnostních zranitelností, v případě aplikace pracující s uživatelským vstupem fuzzer.
+Jelikož doba běhu některých nástrojů může být neúměrně dlouhá, je možné některé testy spouštět jen před plánovaným vydáním nové verze.
 
 Typy bezpečnostních testů:
 * Static Analysis Security Testing (SAST) – kontrola nedostatků zdrojového kódu nebo kompilovaného mezijazyka nebo binární komponenty. Hledá známé problematické vzory v kódu založené pouze na aplikační logice, nikoli na chování aplikace při jejím spuštění. SAST nepokrývá detekci zranitelností v business logice, problémů zavedených na více úrovních aplikace nebo třídy problémů vytvořených za běhu.
-* Dynamic Analysis Security Testing (DAST) – testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech, kdy aplikace využívá externích volání webových služeb nebo Javascript knihoven uložených mimo repozitář kódu).
+* Dynamic Analysis Security Testing (DAST) – testování předpřipravených útoků vůči plně běžící (kompilované) aplikaci s veškerou integrací potřebných komponent (podpora testování aplikace napsané i v jazyce nepodporovaném SAST nástrojem nebo v případech, kdy aplikace využívá externích volání webových služeb nebo JavaScriptových knihoven uložených mimo repozitář kódu).
 * Fuzzing – mnohonásobné variabilní generování nebo mutace dat a jejich předání funkcím zajišťujících syntaktickou analýzu na úrovni aplikačních dat (síťové protokoly, souborové, IPC). Dobré pokrytí kontroly kódu, zejména pro jazyky C a C++.
 * Software Composition Analysis (SCA) – zabývá se správou používání komponent s otevřeným zdrojovým kódem. Nástroje SCA provádějí automatické skenování kódové základny aplikace včetně souvisejících artefaktů, jako jsou kontejnery a registry, s cílem identifikovat všechny komponenty s otevřeným zdrojovým kódem, údaje o jejich souladu s licencemi a případné bezpečnostní zranitelnosti.
 
@@ -227,7 +236,9 @@ Příklady open-source nástrojů:
 Vydané verze aplikací jsou kryptograficky podepsány, případně je alespoň zveřejněn haš (nejlépe SHA-256) výsledného souboru.
 
 ## Kryptografické prostředky
-Prakticky žádná aplikace se nevyhne používání kryptografických prostředků ať už při komunikaci s ostatními systémy nebo při komunikaci uživatele s aplikací. Jelikož tvorba a implementace kryptografických algoritmů je složitá oblast náchylná na jakékoliv drobné chyby a v softwaru s otevřeným zdrojovým kódem je pro případného útočníka snadnější tyto chyby nacházet, doporučujeme se vyvarovat návrhu či případně implementaci vlastních algoritmů, a naopak využívat algoritmy z ověřených kryptografických knihoven. Tyto knihovny obvykle prochází pravidelnou kontrolou bezpečnostních výzkumníků a nalezené zranitelnosti jsou rychle opravovány.
+Prakticky žádná aplikace se nevyhne používání kryptografických prostředků ať už při komunikaci s ostatními systémy nebo při komunikaci uživatele s aplikací.
+Jelikož tvorba a implementace kryptografických algoritmů je složitá oblast náchylná na jakékoliv drobné chyby a v softwaru s otevřeným zdrojovým kódem je pro případného útočníka snadnější tyto chyby nacházet, doporučujeme se vyvarovat návrhu či případně implementaci vlastních algoritmů, a naopak využívat algoritmy z ověřených kryptografických knihoven.
+Tyto knihovny obvykle prochází pravidelnou kontrolou bezpečnostních výzkumníků a nalezené zranitelnosti jsou rychle opravovány.
 
 ### C.1 Jsou využívány ověřené kryptografické knihovny
 Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků, je velmi složité. Proto v aplikacích a knihovnách jsou primárně využívány kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz [L.1](#l1-aplikace-a-knihovny-využívají-udržované-závislosti)).
@@ -237,7 +248,8 @@ Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u k
 ### C.2 Jsou využívány odolné kryptografické prostředky
 V případě, že aplikace nebo knihovna přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné.
 
-Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB. Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu, a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
+Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB.
+Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu, a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
 
 Jiný algoritmus může být použit jen v nezbytných případech (např. kvůli zpětné kompatibilitě nebo komunikaci s jiným systémem nepodporující odolný algoritmus).
 
@@ -250,7 +262,8 @@ Při navazování zabezpečeného odchozího spojení, kde se používá k ově�
 * zda není vypršený nebo naopak před dobou platnosti,
 * zda *Common Name* nebo *Alternative DNS Names* odpovídá použité doméně.
 
-Tyto kontroly jsou u většiny knihoven určených pro navazování zabezpečené komunikace zapnuty ve výchozím nastavení, vývojář by je proto měl vypínat pouze v odůvodněných případech pro konkrétní spojení. Pro ověření kontrol certifikátů je možné použít například službu [badssl](https://badssl.com). Pokud knihovna tyto kontroly nepodporuje, je potřeba ji vyměnit za bezpečnější nebo kontroly provádět dodatečně ve vlastním kódu.
+Tyto kontroly jsou u většiny knihoven určených pro navazování zabezpečené komunikace zapnuty ve výchozím nastavení, vývojář by je proto měl vypínat pouze v odůvodněných případech pro konkrétní spojení. Pro ověření kontrol certifikátů je možné použít například službu [badssl](https://badssl.com).
+Pokud knihovna tyto kontroly nepodporuje, je potřeba ji vyměnit za bezpečnější nebo kontroly provádět dodatečně ve vlastním kódu.
 
 Kontrola revokace certifikátu (pomocí CRL nebo OCSP) je nepovinná (u většiny knihoven není tato kontrola podporována).
 
@@ -268,7 +281,8 @@ V případě, že není potřeba pracovat s originálním údajem, doporučujeme
 * bcrypt – využívá blokovou šifru blowfish, která je dosluhující
 * [PBKDF2](https://datatracker.ietf.org/doc/html/rfc8018) – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)
 
-Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8](#c8-ke-generování-náhodných-tokenů-jsou-použity-kryptograficky-bezpečné-pseudonáhodné-generátory)), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů). Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
+Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8](#c8-ke-generování-náhodných-tokenů-jsou-použity-kryptograficky-bezpečné-pseudonáhodné-generátory)), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů).
+Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
 
 ### C.7 Porovnání hašů uložených hesel je odolné na časovou analýzu
 Běžné porovnání řetězců je náchylné na časovou analýzu („timing attack”) – z důvodu optimalizace je porovnávání ukončeno při nalezení první neshody a doba porovnání je tedy závislá na uživatelském vstupu. Případný útočník může tímto způsobem odhadnout použité heslo.
@@ -324,12 +338,14 @@ Aplikace musí umožňovat napojení na centrální log management zasíláním 
 V případě webové aplikace je možné zvolit, z jakého zdroje je získávána IP adresa původce, tak aby nebyla zaznamenána pouze IP adresa reverzní proxy.
 
 ### L.4 Nejsou zaznamenávány tajné identifikátory
-V žádné úrovni logování nejsou do log záznamů vkládány tajné identifikátory (hesla, přístupové tokeny, privátní klíče apod.) – buď jsou z logování vynechány nebo nahrazeny bezvýznamovou hodnotou. Pokud je pro vývoj nutné mít k těmto tajným identifikátorům přístup, je potřeba toto logování povolit zvláštním parametrem (např. proměnnou prostředí). Taktéž je potřeba omezit logování osobních údajů, pokud nejsou nezbytné k zajištění bezpečnosti systému.
+V žádné úrovni logování nejsou do log záznamů vkládány tajné identifikátory (hesla, přístupové tokeny, privátní klíče apod.) – buď jsou z logování vynechány nebo nahrazeny bezvýznamovou hodnotou. Pokud je pro vývoj nutné mít k těmto tajným identifikátorům přístup, je potřeba toto logování povolit zvláštním parametrem (např. proměnnou prostředí).
+Taktéž je potřeba omezit logování osobních údajů, pokud nejsou nezbytné k zajištění bezpečnosti systému.
 
 ### L.5 Výjimky jsou řízeny
 Systém musí podporovat řízení výjimek, kdy výjimkou se myslí libovolná chyba nebo neočekávané chování, které se vyskytne během vykonávání programu a je následně zpracováno a zároveň nedojde k neřízenému selhání běhu.
 
-V případě uživatelské aplikace bude při vzniku chyby běhu programu zobrazeno dialogové okno s identifikátorem chyby mající vazbu na log události aplikace, pod kterým je situace následně v lozích dohledatelná, přičemž musí existovat oddělení uživatelských hlášení od technických. Uživatelská hlášení nesmí obsahovat technické detaily (jako např. traceback), ale jen identifikátor, který odkazuje na jeho popis mimo systém. Opakované a známé chyby je vhodné opatřit kódem a smysluplným popisem, aby je chápal běžný uživatel systému. Volitelně jsou tyto chyby odesílány do centrálního systému pro správu výjimek.
+V případě uživatelské aplikace bude při vzniku chyby běhu programu zobrazeno dialogové okno s identifikátorem chyby mající vazbu na log události aplikace, pod kterým je situace následně v lozích dohledatelná, přičemž musí existovat oddělení uživatelských hlášení od technických.
+Uživatelská hlášení nesmí obsahovat technické detaily (jako např. traceback), ale jen identifikátor, který odkazuje na jeho popis mimo systém. Opakované a známé chyby je vhodné opatřit kódem a smysluplným popisem, aby je chápal běžný uživatel systému. Volitelně jsou tyto chyby odesílány do centrálního systému pro správu výjimek.
 
 V případě systému, který neinteraguje s uživatelem, jsou výjimky logovány či zaslány do centrálního systému pro správu výjimek.
 
