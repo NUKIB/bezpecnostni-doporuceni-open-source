@@ -337,9 +337,10 @@ Aplikace musí umožňovat napojení na centrální log management zasíláním 
 
 V případě webové aplikace je možné zvolit, z jakého zdroje je získávána IP adresa původce, tak aby nebyla zaznamenána pouze IP adresa reverzní proxy.
 
-### L.4 Nejsou zaznamenávány tajné identifikátory
+### L.4 Nejsou zaznamenávány tajné identifikátory ani osobní údaje
 V žádné úrovni logování nejsou do log záznamů vkládány tajné identifikátory (hesla, přístupové tokeny, privátní klíče apod.) – buď jsou z logování vynechány nebo nahrazeny bezvýznamovou hodnotou. Pokud je pro vývoj nutné mít k těmto tajným identifikátorům přístup, je potřeba toto logování povolit zvláštním parametrem (např. proměnnou prostředí).
 Taktéž je potřeba omezit logování osobních údajů, pokud nejsou nezbytné k zajištění bezpečnosti systému.
+Omezení logování tajných identifikátorů a osobních údajů se vztahuje jak na logy z aplikace, tak např. na přístupové logy z webserveru. Tyto údaje by tím pádem neměly být ani součástí URL adres.
 
 ### L.5 Výjimky jsou řízeny
 Systém musí podporovat řízení výjimek, kdy výjimkou se myslí libovolná chyba nebo neočekávané chování, které se vyskytne během vykonávání programu a je následně zpracováno a zároveň nedojde k neřízenému selhání běhu.
