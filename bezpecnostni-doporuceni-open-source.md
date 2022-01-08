@@ -98,7 +98,7 @@ Všechny účty vývojářů v systému správce kódu, kteří mají práva za�
 jsou svázány s pracovní e-mailovou adresou vývojáře. Je možné taktéž využít jiného poskytovatele identit, pokud je tato identita svázána s pracovní e-mailovou schránkou.
 
 ### O.9 Dokumentace je součástí repozitáře
-Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití) je součástí repozitáře a verzována spolu s kódem.
+Dokumentace (popisující alespoň bezpečnostní mechanismy a jejich použití, v případě serverových aplikací také informace a požadavky k nasazení) je součástí repozitáře a verzována spolu s kódem.
 
 ### O.10 Pro knihovny: Zranitelné verze knihoven jsou označeny
 Pokud je knihovna zveřejněna ve veřejném správci balíčků, verze obsahující zranitelnosti jsou označeny jako zranitelné (pokud to správce balíčků umožňuje, obvyklý název této funkcionality je yanked) nebo jsou z něj odstraněny.
