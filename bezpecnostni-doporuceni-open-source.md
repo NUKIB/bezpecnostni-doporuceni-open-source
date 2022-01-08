@@ -175,7 +175,7 @@ jsou svázány s pracovní e-mailovou adresou vývojáře. Je možné taktéž v
 <a name="o-9"></a>
 
 ### O.9 Dokumentace je součástí repozitáře
-Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití) je součástí repozitáře a verzována spolu s kódem.
+Dokumentace (popisující alespoň bezpečnostní mechanismy a jejich použití, v případě serverových aplikací také informace a požadavky k nasazení) je součástí repozitáře a verzována spolu s kódem.
 
 Pokud aplikace zpřístupňuje aplikační programové rozhraní (API), je toto rozhraní dokumentováno ve strojově zpracovatelném formátu dle některého z otevřených standardů (např. [OpenAPI](https://swagger.io/specification/)).
 
