@@ -111,6 +111,15 @@ je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí 
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
 
+### O.12 Součástí repozitáře je soubor CONTRIBUTING
+Aby byla kooperace s přispívajícími vývojáři co nejjednodušší, měl by repozitář obsahovat soubor `CONTRIBUTING.md`. Jeho obsah by měl čtenáři objasnit především:
+
+- Nastavení a zprovoznění prostředí pro běh kódu.
+- Instalace závislostí a zprovoznění samotné aplikace.
+- Testování nových změn před pull requestem.
+- Jaký standard pro psaní a formátování kódu je používán.
+- Jakou formu má mít pull request.
+
 ## Správa kódu
 
 ### S.1 Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři
