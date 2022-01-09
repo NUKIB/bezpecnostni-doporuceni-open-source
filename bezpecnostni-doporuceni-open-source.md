@@ -177,6 +177,8 @@ jsou svázány s pracovní e-mailovou adresou vývojáře. Je možné taktéž v
 ### O.9 Dokumentace je součástí repozitáře
 Dokumentace (alespoň popisující bezpečnostní mechanismy a jejich použití) je součástí repozitáře a verzována spolu s kódem.
 
+Pokud aplikace zpřístupňuje aplikační programové rozhraní (API), je toto rozhraní dokumentováno ve strojově zpracovatelném formátu dle některého z otevřených standardů (např. [OpenAPI](https://swagger.io/specification/)).
+
 <a name="o-10"></a>
 
 ### O.10 Pro knihovny: Zranitelné verze knihoven jsou označeny
