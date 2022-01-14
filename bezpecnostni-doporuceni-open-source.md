@@ -1,4 +1,4 @@
-# Bezpečnostní doporučení pro vývoj otevřeného software ve veřejné sféře
+# Bezpečnostní doporučení pro vývoj otevřeného software ve veřejné správě
 
 *Verze: 0.1*
 
