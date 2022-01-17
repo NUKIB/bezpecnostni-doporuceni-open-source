@@ -26,7 +26,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
 2. [Správa a tvorba kódu](#sprava-kodu)
    1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
    2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
-   3. [S.3: Je prováděna kontrola kódu](#s-3)
+   3. [S.3: Je prováděna kontrola změn kódu](#s-3)
    4. [S.4: Repozitář neobsahuje binární spustitelné soubory](#s-4)
    5. [S.5 U dynamicky typovaných jazyků je využíváno striktní typování](#s-5)
 3. [Použité knihovny](#pouzite-knihovny)
@@ -237,7 +237,7 @@ var_dump(verifyPassword("ahoj", "ahoj")); // bool(true)
 var_dump(verifyPassword("ahoj", true)); // bool(true)
 ```
 
-S využitím struktiního typování:
+S využitím striktního typování:
 ```php
 <?php
 declare(strict_types=1);
