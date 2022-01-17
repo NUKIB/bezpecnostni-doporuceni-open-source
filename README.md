@@ -6,7 +6,7 @@
   </tr>
 </table>
 
-# Bezpečnostní doporučení pro vývoj otevřeného software ve veřejné správě
+# Bezpečnostní doporučení pro vývoj otevřeného softwaru ve veřejné správě
 
 [Národní úřad pro kybernetickou a informační bezpečnost](https://www.nukib.cz) ve spolupráci s [Ministerstvem vnitra](https://www.mvcr.cz) připravil bezpečnostní doporučení, které může veřejná správa využít, pokud se rozhodne zveřejnit vyvíjený software pod open source licencí.
 
@@ -16,7 +16,7 @@
 
 ## Jak přispívat
 
-V současné době zveřejněná verze ještě není finální, ale je  připravena k připomínkám veřejné správy, dodavatelů software pro veřejnou správu a odborné veřejnosti.
+V současné době zveřejněná verze ještě není finální, ale je  připravena k připomínkám veřejné správy, dodavatelů softwaru pro veřejnou správu a odborné veřejnosti.
 Připomínky k doporučení můžete přidávat pomocí [Issues](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/issues) nebo přímo návrhem změny doporučení pomocí [Pull requestu](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/edit/main/bezpecnostni-doporuceni-open-source.md) a to do 31. ledna 2022. Vydání finální verze doporučení je plánováno v březnu 2022.
 
 ### Obecná pravidla dokumentu
