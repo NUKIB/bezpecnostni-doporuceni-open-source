@@ -27,7 +27,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
    1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
    2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
    3. [S.3: Je prováděna kontrola kódu](#s-3)
-   4. [S.4: Repozitář neobsahuje binární spustitelné soubory](#s-4)
+   4. [S.4: Repozitář neobsahuje binární spustitelné soubory nebo kompilované kódy](#s-4)
 3. [Použité knihovny](#pouzite-knihovny)
    1. [D.1: Aplikace a knihovny využívají udržované závislosti](#d-1)
    2. [D.2: Preferovány jsou knihovny s bezpečným API](#d-2)
@@ -217,8 +217,8 @@ Pokud je umožněno do kódu přispívat vývojářům z řad veřejnosti, v př
 
 <a name="s-4"></a>
 
-### S.4 Repozitář neobsahuje binární spustitelné soubory
-Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustitelných souborech (včetně zkompilovaných knihoven) umístěných v repozitáři. Pokud je to nezbytné, je k tomuto souboru alespoň přidán popis, odkud byl soubor získán nebo jak je možné jej sestavit.
+### S.4 Repozitář neobsahuje binární spustitelné soubory nebo kompilované kódy
+Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustitelných souborech (včetně zkompilovaných knihoven) umístěných v repozitáři. Pokud je to nezbytné, je k tomuto zkompilovaném souboru alespoň přidán popis, odkud byl soubor získán nebo jak je možné jej sestavit.
 
 <a name="pouzite-knihovny"></a>
 
