@@ -11,61 +11,61 @@ Proto, pokud se organizace rozhodne zveřejnit zdrojový kód, měla by zvážit
 Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou bezpečnostní ve veřejné správě nebo společnostem dodávajícím veřejné správě software. Všechna doporučení jsou nezávazná a je na organizaci, které z nich a v jaké míře bude u svých projektů využívat.
 
 ## Obsah
-1. [Organizační opatření](#organizacni-opatreni)
-   1. [O.1: Před začátkem vývoje je zvážen výběr použitého jazyka a frameworku z hlediska bezpečnosti](#o-1)
-   2. [O.2: Zdrojový kód je zveřejněn co nejdříve](#o-2)
-   3. [O.3: Součástí repozitáře je soubor SECURITY](#o-3)
-   4. [O.4: Je určena osoba zodpovědná za nahlášené zranitelnosti](#o-4)
-   5. [O.5: Nahlášené zranitelnosti jsou opraveny do 30 dnů](#o-5)
-   6. [O.6: Všechny opravené zranitelnosti jsou uvedeny v souboru se změnami](#o-6)
-   7. [O.7: Účty vývojářů při autentizaci používají vícefaktorovou autentizaci](#o-7)
-   8. [O.8: Účty vývojářů jsou svázány s pracovní e-mailovou adresou](#o-8)
-   9. [O.9: Dokumentace je součástí repozitáře](#o-9)
-   10. [O.10: Pro knihovny: Zranitelné verze knihoven jsou označeny](#o-10)
-   11. [O.11: Neudržované aplikace a knihovny jsou označeny](#o-11)
-2. [Správa kódu](#sprava-kodu)
-   1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
-   2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
-   3. [S.3: Je prováděna kontrola kódu](#s-3)
-   4. [S.4: Repozitář neobsahuje binární spustitelné soubory](#s-4)
-3. [Použité knihovny](#pouzite-knihovny)
-   1. [D.1: Aplikace a knihovny využívají udržované závislosti](#d-1)
-   2. [D.2: Preferovány jsou knihovny s bezpečným API](#d-2)
-   3. [D.3: Preferovány jsou knihovny, jejichž autoři „dbají na bezpečnost”](#d-3)
-   4. [D.4: Pro aplikace: Aplikace při definování závislostí používají „lock file”](#d-4)
-   5. [D.5: Závislosti jsou stahovány z důvěryhodných úložišť](#d-5)
-4. [Kontinuální integrace](#kontinualni-integrace)
-   1. [CI.1: Pro aplikace: Jsou kontrolovány verze použitých závislostí](#ci-1)
-   2. [CI.2: Nalezené zranitelnosti jsou testovány v rámci CI](#ci-2)
-   3. [CI.3: Pro aplikace: Sestavení aplikace je plně automatizované](#ci-3)
-   4. [CI.4: Je definován a vynucován standard pro zdrojový kód](#ci-4)
-   5. [CI.5: Jsou prováděny jednotkové nebo integrační testy v oblastech s vlivem na bezpečnost](#ci-5)
-   6. [CI.6: Jsou prováděny automatizované bezpečnostní testy](#ci-6)
-   7. [CI.7: Je prováděna kontrola tajných identifikátorů ve zdrojovém kódu](#ci-7)
-   8. [CI.8: Pro aplikace: Vydané verze jsou podepsány](#ci-8)
-5. [Kryptografické prostředky](#kryptograficke-prostredky)
-   1. [C.1 Jsou využívány ověřené kryptografické knihovny](#c-1)
-   2. [C.2 Jsou využívány odolné kryptografické prostředky](#c-2)
-   3. [C.3 Při použití protokolu TLS je podporována alespoň verze 1.2](#c-3)
-   4. [C.4 Je prováděno ověřování použitého certifikátu](#c-4)
-   5. [C.5 Aplikace používá systémové úložiště důvěryhodných certifikátů](#c-5)
-   6. [C.6 Uložená hesla jsou odolná proti offline útokům](#c-6)
-   7. [C.7 Porovnání hašů uložených hesel je odolné na časovou analýzu](#c-7)
-   8. [C.8 Ke generování náhodných tokenů jsou použity kryptograficky bezpečné pseudonáhodné generátory](#c-8)
-   9. [C.9 Tajné identifikátory jsou odstraňovány z paměti](#c-9)
-6. [Záznamy o událostech](#zaznamy-o-udalostech)
-   1. [L.1 Pro knihovny: Knihovny využívají standardní rozhraní pro logování](#l-1)
-   2. [L.2 Pro aplikace: Aplikace umožňuje logování důležitých akcí](#l-2)
-   3. [L.3 Pro aplikace: Aplikace podporuje napojení na centrální log management](#l-3)
-   4. [L.4 Nejsou zaznamenávány tajné identifikátory](#l-4)
-   5. [L.5 Výjimky jsou řízeny](#l-5)
-7. [Relační databáze](#relacni-databaze)
-   1. [D.1 Jsou využívány primární klíče](#d-1)
-   2. [D.2 Jsou používány cizí klíče při vazbě na číselníkové hodnoty anebo na jiné entity](#d-2)
-   3. [D.3 V rámci databáze jsou kontrolovány hodnoty parametrů („constraints”)](#d-3)
-   4. [D.4 Pokud databázový sloupec předpokládá unikátní hodnotu, je využit unikátní index](#d-4)
-   5. [D.5 Při vkládání dat jsou využívány transakce](#d-5)
-   6. [D.6 Databázové schéma je komentováno](#d-6)
+1. [Organizační opatření][1]
+   1. [O.1: Před začátkem vývoje je zvážen výběr použitého jazyka a frameworku z hlediska bezpečnosti][2]
+   2. [O.2: Zdrojový kód je zveřejněn co nejdříve][3]
+   3. [O.3: Součástí repozitáře je soubor SECURITY][4]
+   4. [O.4: Je určena osoba zodpovědná za nahlášené zranitelnosti][5]
+   5. [O.5: Nahlášené zranitelnosti jsou opraveny do 30 dnů][6]
+   6. [O.6: Všechny opravené zranitelnosti jsou uvedeny v souboru se změnami][7]
+   7. [O.7: Účty vývojářů při autentizaci používají vícefaktorovou autentizaci][8]
+   8. [O.8: Účty vývojářů jsou svázány s pracovní e-mailovou adresou][9]
+   9. [O.9: Dokumentace je součástí repozitáře][10]
+   10. [O.10: Pro knihovny: Zranitelné verze knihoven jsou označeny][11]
+   11. [O.11: Neudržované aplikace a knihovny jsou označeny][12]
+2. [Správa kódu][13]
+   1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři][14]
+   2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve][15]
+   3. [S.3: Je prováděna kontrola kódu][16]
+   4. [S.4: Repozitář neobsahuje binární spustitelné soubory][17]
+3. [Použité knihovny][18]
+   1. [D.1: Aplikace a knihovny využívají udržované závislosti][19]
+   2. [D.2: Preferovány jsou knihovny s bezpečným API][20]
+   3. [D.3: Preferovány jsou knihovny, jejichž autoři „dbají na bezpečnost”][21]
+   4. [D.4: Pro aplikace: Aplikace při definování závislostí používají „lock file”][22]
+   5. [D.5: Závislosti jsou stahovány z důvěryhodných úložišť][23]
+4. [Kontinuální integrace][24]
+   1. [CI.1: Pro aplikace: Jsou kontrolovány verze použitých závislostí][25]
+   2. [CI.2: Nalezené zranitelnosti jsou testovány v rámci CI][26]
+   3. [CI.3: Pro aplikace: Sestavení aplikace je plně automatizované][27]
+   4. [CI.4: Je definován a vynucován standard pro zdrojový kód][28]
+   5. [CI.5: Jsou prováděny jednotkové nebo integrační testy v oblastech s vlivem na bezpečnost][29]
+   6. [CI.6: Jsou prováděny automatizované bezpečnostní testy][30]
+   7. [CI.7: Je prováděna kontrola tajných identifikátorů ve zdrojovém kódu][31]
+   8. [CI.8: Pro aplikace: Vydané verze jsou podepsány][32]
+5. [Kryptografické prostředky][33]
+   1. [C.1 Jsou využívány ověřené kryptografické knihovny][34]
+   2. [C.2 Jsou využívány odolné kryptografické prostředky][35]
+   3. [C.3 Při použití protokolu TLS je podporována alespoň verze 1.2][36]
+   4. [C.4 Je prováděno ověřování použitého certifikátu][37]
+   5. [C.5 Aplikace používá systémové úložiště důvěryhodných certifikátů][38]
+   6. [C.6 Uložená hesla jsou odolná proti offline útokům][39]
+   7. [C.7 Porovnání hašů uložených hesel je odolné na časovou analýzu][40]
+   8. [C.8 Ke generování náhodných tokenů jsou použity kryptograficky bezpečné pseudonáhodné generátory][41]
+   9. [C.9 Tajné identifikátory jsou odstraňovány z paměti][42]
+6. [Záznamy o událostech][43]
+   1. [L.1 Pro knihovny: Knihovny využívají standardní rozhraní pro logování][44]
+   2. [L.2 Pro aplikace: Aplikace umožňuje logování důležitých akcí][45]
+   3. [L.3 Pro aplikace: Aplikace podporuje napojení na centrální log management][46]
+   4. [L.4 Nejsou zaznamenávány tajné identifikátory][47]
+   5. [L.5 Výjimky jsou řízeny][48]
+7. [Relační databáze][49]
+   1. [D.1 Jsou využívány primární klíče][50]
+   2. [D.2 Jsou používány cizí klíče při vazbě na číselníkové hodnoty anebo na jiné entity][51]
+   3. [D.3 V rámci databáze jsou kontrolovány hodnoty parametrů („constraints”)][52]
+   4. [D.4 Pokud databázový sloupec předpokládá unikátní hodnotu, je využit unikátní index][53]
+   5. [D.5 Při vkládání dat jsou využívány transakce][54]
+   6. [D.6 Databázové schéma je komentováno][55]
 
 <a name="organizacni-opatreni"></a>
 
@@ -76,7 +76,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
 ### O.1 Před začátkem vývoje je zvážen výběr použitého jazyka a frameworku z hlediska bezpečnosti
 Pokud je projekt v přípravné fázi a teprve probíhá volba použitého jazyka a frameworku, jedním ze zvažovaných bodů by měla být taktéž bezpečnost použitých technologií. Z tohoto pohledu je vhodné preferovat moderní jazyky, které minimalizují problémy se zranitelnostmi na úrovni paměti (bez manuálního uvolňování paměti) a souběhů.
 
-Při výběru frameworku je vhodné preferovat ty, které splňují pravidla pro bezpečná API (viz [D.2](#d2-preferovány-jsou-knihovny-s-bezpečným-api)) a jejichž autoři garantují opravy bezpečnostních chyb u použité verze po akceptovatelnou dobu. V případě dlouhodobého projektu s dlouhou plánovanou životností je vhodné využít takové verze, které nabízí dlouhodobou podporu.
+Při výběru frameworku je vhodné preferovat ty, které splňují pravidla pro bezpečná API (viz [D.2][56]) a jejichž autoři garantují opravy bezpečnostních chyb u použité verze po akceptovatelnou dobu. V případě dlouhodobého projektu s dlouhou plánovanou životností je vhodné využít takové verze, které nabízí dlouhodobou podporu.
 
 Budoucí změna jazyka, frameworku nebo jen aktualizace na novější hlavní verzi frameworku bývá často velmi nákladná a vyžaduje přepsání velké části aplikace.
 
@@ -114,7 +114,7 @@ V případě bezpečnostní zranitelnosti nás prosím přímo kontaktujte …, 
 Pokud hlásíte bezpečnostní zranitelnost, nezapomeňte uvést, jak chcete být zveřejněni v changelogu a zda jste již požádali o přidělení CVE. Pokud ne, zažádáme o přidělení CVE za vás.
 ```
 
-V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu uvedeného na [securitytxt.org](https://securitytxt.org/), který si každý správce může nahradit vlastním obsahem.
+V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu uvedeného na [securitytxt.org][57], který si každý správce může nahradit vlastním obsahem.
 
 Příklad souboru `security.txt`:
 
@@ -137,7 +137,7 @@ V rámci organizace spravující zdrojový kód v repozitáři je určena odpov�
 Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace.
 U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
 
-V případě kritické zranitelnosti (např. RCE zneužitelné bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
+V případě kritické zranitelnosti (např. RCE zneužitelné bez potřeby autentizace, [CVSS][58] vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
 Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti) nebo je zneužití zranitelnosti primitivní, musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
 
@@ -146,9 +146,9 @@ Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně
 ### O.6 Všechny opravené zranitelnosti jsou uvedeny v souboru se změnami
 Všechny zranitelnosti nahlášené i nalezené, např. interním penetračním testem či kontrolou kódu vývojářem, musí být uvedeny v souboru popisující provedené změny v jednotlivých verzích (typicky soubor CHANGELOG), který je součásti repozitáře.
 
-Pro závažné zranitelnosti (CVSS 7.0 a vyšší) je přiřazen kód [CVE](https://www.cve.org). Kód CVE je uveden v souboru se změnami.
+Pro závažné zranitelnosti (CVSS 7.0 a vyšší) je přiřazen kód [CVE][59]. Kód CVE je uveden v souboru se změnami.
 
-Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na [cveform.mitre.org](https://cveform.mitre.org/).
+Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na [cveform.mitre.org][60].
 
 <a name="o-7"></a>
 
@@ -159,7 +159,7 @@ Všichni vývojáři, kteří mají práva:
 * spravovat uživatelské účty,
 
 používají vícefaktorovou autentizaci s nejméně dvěma různými typy faktorů pro přístup do systému správy kódu v případě, že je tento systém přístupný z internetu. Nejlépe, pokud je toto nastavení možné vynutit nastavením politiky repozitáře nebo celého systému.
-Pokud je použit přístup přes kryptografický klíč, např. při přístupu pomocí Secure Shell (SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
+Pokud je použit přístup přes kryptografický klíč, např. při přístupu pomocí Secure Shell (SSH), tento klíč využívá odolné kryptografické prostředky (viz [C.2][61]). Pokud je to možné, doporučujeme tento klíč mít uložen na hardwarovém kryptografickém modulu (např. HSM).
 
 Kryptografické podepisování jednotlivých změn kódu je doporučeno.
 
@@ -177,7 +177,7 @@ jsou svázány s pracovní e-mailovou adresou vývojáře. Je možné taktéž v
 ### O.9 Dokumentace je součástí repozitáře
 Dokumentace (popisující alespoň bezpečnostní mechanismy a jejich použití, v případě serverových aplikací také informace a požadavky k nasazení) je součástí repozitáře a verzována spolu s kódem.
 
-Pokud aplikace zpřístupňuje aplikační programové rozhraní (API), je toto rozhraní dokumentováno ve strojově zpracovatelném formátu dle některého z otevřených standardů (např. [OpenAPI](https://swagger.io/specification/)).
+Pokud aplikace zpřístupňuje aplikační programové rozhraní (API), je toto rozhraní dokumentováno ve strojově zpracovatelném formátu dle některého z otevřených standardů (např. [OpenAPI][62]).
 
 <a name="o-10"></a>
 
@@ -188,7 +188,7 @@ Pokud je knihovna zveřejněna ve veřejném správci balíčků, verze obsahuj�
 
 ### O.11 Neudržované aplikace a knihovny jsou označeny
 Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá),
-je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
+je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3][63]).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
 
@@ -206,7 +206,7 @@ Změny, který mění bezpečnost systému (např. použitý kryptografický pro
 
 ### S.2 Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve
 Doporučujeme zakázat přímé vkládání změn do hlavní vývojové větve („zakázat commitování do masteru”) a taktéž změny historie hlavní vývojové větve („force push do masteru”). Vývoj probíhá v oddělených větvích, které se následně začleňují do hlavní větve pomocí požadavků na začlenění do hlavní větve (v terminologii správců kódu *Pull request* nebo *Merge request*).
-Do hlavní vývojové větve je umožněn kód začlenit, jen pokud byla kontinuální integrace (viz [sekce CI](#kontinuální-integrace)) úspěšná („zakázat merge, pokud neprojde CI”).
+Do hlavní vývojové větve je umožněn kód začlenit, jen pokud byla kontinuální integrace (viz [sekce CI][64]) úspěšná („zakázat merge, pokud neprojde CI”).
 
 <a name="s-3"></a>
 
@@ -256,8 +256,6 @@ Příklady knihoven s nebezpečným API:
 * Serializační knihovny, které při deserializaci umožňují spouštění kódu. [^1]
 * Knihovna pro práci s databází, u které vývojář musí escapovat vkládaná data voláním další funkce.
 
-[^1]: Problematická je např. deserializace v jazyce PHP pomocí funkce [unserialize](https://www.php.net/manual/en/function.unserialize.php) nebo Java Native Serialization.
-
 <a name="d-3"></a>
 
 ### D.3 Preferovány jsou knihovny, jejichž autoři „dbají na bezpečnost”
@@ -270,14 +268,14 @@ Znaky knihovny, u nichž autoři dbají na bezpečnost:
 * soubor CHANGELOG obsahuje nalezené bezpečnostní zranitelnosti,
 * oprava nahlášených bezpečnostních chyb trvá méně než 30 dní,
 * nalezené zranitelnosti nejsou triviálního charakteru (případně nejsou obvyklé),
-* v rámci hledání zranitelností autoři používají technik [fuzzingu](https://owasp.org/www-community/Fuzzing).
+* v rámci hledání zranitelností autoři používají technik [fuzzingu][66].
 
 <a name="d-4"></a>
 
 ### D.4 Pro aplikace: Aplikace při definování závislostí používají „lock file”
 Aplikace specifikuje přesné verze závislostí, se kterými byla testována, pokud to daný správce závislostí umožňuje. Cílem je zabránit využití novější a potenciálně podvržené verze závislostí, kdy útočník získá přístup k účtu správce knihovny a nahradí ji podvrženou verzí.
 
-V případě webové aplikace, která načítá knihovny z externích serverů (CDN) je k tomuto účelu možné použít technologii [SRI](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) (Subresource Integrity) podporovanou v moderních webových prohlížečích.
+V případě webové aplikace, která načítá knihovny z externích serverů (CDN) je k tomuto účelu možné použít technologii [SRI][67] (Subresource Integrity) podporovanou v moderních webových prohlížečích.
 
 <a name="d-5"></a>
 
@@ -300,9 +298,9 @@ Před každým sestavení aplikace je kontrolováno, zda použité závislosti n
 V případě potřeby výjimky (např. uvedená zranitelnost není relevantní pro konkrétní použití), musí být tato výjimka zdokumentována.
 
 Příklady open-source nástrojů pro kontrolu závislostí:
-* Pro PHP: [Local PHP Security Checker](https://github.com/fabpot/local-php-security-checker)
-* Pro Python: [Safety](https://pypi.org/project/safety/)
-* Pro Rust: [Cargo audit](https://github.com/rustsec/rustsec)
+* Pro PHP: [Local PHP Security Checker][68]
+* Pro Python: [Safety][69]
+* Pro Rust: [Cargo audit][70]
 
 <a name="ci-2"></a>
 
@@ -350,8 +348,8 @@ V rámci kontinuální integrace je použit nástroj, který detekuje, zda zdroj
 Při pozitivním nálezu je nutné považovat tajný identifikátor za kompromitovaný a musí být změněn či revokován bez ohledu, jak dlouho byl zveřejněn. Změna historie repozitáře není dostačující.
 
 Příklady open-source nástrojů:
-* [Talisman](https://github.com/thoughtworks/talisman)
-* [Gitrob](https://github.com/michenriksen/gitrob)
+* [Talisman][71]
+* [Gitrob][72]
 
 <a name="ci-8"></a>
 
@@ -368,7 +366,7 @@ Tyto knihovny obvykle prochází pravidelnou kontrolou bezpečnostních výzkumn
 <a name="c-1"></a>
 
 ### C.1 Jsou využívány ověřené kryptografické knihovny
-Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků, je velmi složité. Proto v aplikacích a knihovnách jsou primárně využívány kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz [L.1](#l1-aplikace-a-knihovny-využívají-udržované-závislosti)).
+Naprogramovat kryptografické algoritmy tak, aby byly odolné proti různým typům útoků, je velmi složité. Proto v aplikacích a knihovnách jsou primárně využívány kryptografické funkce dostupné v rámci základní knihovny použitého jazyka, frameworku nebo systému, případně jiné ověřené knihovny (viz [L.1][73]).
 
 Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u kódu je uvedeno, z jakého důvodu byla zvolena vlastní implementace.
 
@@ -377,7 +375,7 @@ Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u k
 ### C.2 Jsou využívány odolné kryptografické prostředky
 V případě, že aplikace nebo knihovna přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné.
 
-Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB.
+Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků][74] vydávaných NÚKIB.
 Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu, a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
 
 Jiný algoritmus může být použit jen v nezbytných případech (např. kvůli zpětné kompatibilitě nebo komunikaci s jiným systémem nepodporující odolný algoritmus).
@@ -395,12 +393,12 @@ Při navazování zabezpečeného odchozího spojení, kde se používá k ově�
 * zda není vypršený nebo naopak před dobou platnosti,
 * zda *Common Name* nebo *Alternative DNS Names* odpovídá použité doméně.
 
-Tyto kontroly jsou u většiny knihoven určených pro navazování zabezpečené komunikace zapnuty ve výchozím nastavení, vývojář by je proto měl vypínat pouze v odůvodněných případech pro konkrétní spojení. Pro ověření kontrol certifikátů je možné použít například službu [badssl](https://badssl.com).
+Tyto kontroly jsou u většiny knihoven určených pro navazování zabezpečené komunikace zapnuty ve výchozím nastavení, vývojář by je proto měl vypínat pouze v odůvodněných případech pro konkrétní spojení. Pro ověření kontrol certifikátů je možné použít například službu [badssl][75].
 Pokud knihovna tyto kontroly nepodporuje, je potřeba ji vyměnit za bezpečnější nebo kontroly provádět dodatečně ve vlastním kódu.
 
 Kontrola revokace certifikátu (pomocí CRL nebo OCSP) je nepovinná (u většiny knihoven není tato kontrola podporována).
 
-Je taktéž možné použít jiný způsob ověření certifikátu, který zaručuje obdobnou nebo vyšší bezpečnost (např. pomocí protokolu [DANE](https://datatracker.ietf.org/doc/html/rfc6698) a DNSSEC nebo uvedení otisku certifikátu v konfiguračním souboru).
+Je taktéž možné použít jiný způsob ověření certifikátu, který zaručuje obdobnou nebo vyšší bezpečnost (např. pomocí protokolu [DANE][76] a DNSSEC nebo uvedení otisku certifikátu v konfiguračním souboru).
 
 <a name="c-5"></a>
 
@@ -413,12 +411,12 @@ Při kontrole, zda je certifikát podepsán důvěryhodnou certifikační autori
 Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními údaji a ukládá je do databáze či do souboru, uložené údaje musí být chráněny proti offline útokům (tzn. musí být uloženy v takové formě, u které je výpočetně náročné i se znalostí uložených údajů získat údaje původní).
 
 V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahašování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
-* [Argon2](https://datatracker.ietf.org/doc/html/rfc9106) (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
-* [scrypt](https://datatracker.ietf.org/doc/html/rfc7914) – využívá hašovací algoritmus SHA-256, který je schválen
+* [Argon2][77] (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
+* [scrypt][78] – využívá hašovací algoritmus SHA-256, který je schválen
 * bcrypt – využívá blokovou šifru blowfish, která je dosluhující
-* [PBKDF2](https://datatracker.ietf.org/doc/html/rfc8018) – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)
+* [PBKDF2][79] – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2][80]
 
-Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8](#c8-ke-generování-náhodných-tokenů-jsou-použity-kryptograficky-bezpečné-pseudonáhodné-generátory)), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů).
+Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8][81]), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů).
 Pokud je možné zvolit výpočetní náročnost algoritmu, doporučujeme ji nastavit tak, aby výpočet trval minimálně 100 ms (lépe 500 ms) a využil minimálně 1 MB paměti.
 
 <a name="c-7"></a>
@@ -429,8 +427,8 @@ Běžné porovnání řetězců je náchylné na časovou analýzu („timing at
 Odolné funkce jsou tedy takové, kdy porovnání trvá vždy stejnou dobu bez ohledu na použitý vstup. Není tedy možné využít běžné porovnání (ve většině programovacích jazyků pomocí operátoru `==`), které porovnání ukončí po nalezení první neshody.
 
 Příklady odolných funkcí pro porovnání hašů:
-* PHP: [hash_equals](https://www.php.net/manual/en/function.hash-equals.php)
-* Python: [hmac.compare_digest](https://docs.python.org/3/library/hmac.html#hmac.compare_digest)
+* PHP: [hash\_equals][82]
+* Python: [hmac.compare\_digest][83]
 
 <a name="c-8"></a>
 
@@ -438,13 +436,13 @@ Příklady odolných funkcí pro porovnání hašů:
 Pokud je v aplikaci nebo knihovně generován náhodný token, je pro toto generování použit kryptograficky bezpečný pseudonáhodný generátor – tyto funkce jsou označované jako CSPRNG (cryptographically secure pseudorandom number generator) nebo CPRNG (cryptographic pseudorandom number generator). Mezi náhodné tokeny patří například:
 * přístupový klíč,
 * session ID,
-* kryptografická nonce (např. inicializační vektor nebo sůl při ukládání hesel – viz [C.6](#c6-uložená-hesla-jsou-odolná-proti-offline-útokům)),
+* kryptografická nonce (např. inicializační vektor nebo sůl při ukládání hesel – viz [C.6][84]),
 * identifikátor zaslaný na e-mail pro obnovu hesla,
 * prvotní heslo uživatele.
 
 Příklady funkcí pro generování kryptograficky bezpečných pseudonáhodných čísel:
-* PHP: [random_bytes](https://www.php.net/manual/en/function.random-bytes.php)
-* Python: [modul secrets](https://docs.python.org/3/library/secrets.html)
+* PHP: [random\_bytes][85]
+* Python: [modul secrets][86]
 
 <a name="c-9"></a>
 
@@ -463,7 +461,7 @@ Knihovny využívají standardní rozhraní pro zaznamenávání událostí dle 
 <a name="l-2"></a>
 
 ### L.2 Pro aplikace: Aplikace umožňuje logování důležitých akcí
-Aplikace zaznamenává důležité události provedené administrátory, uživateli nebo samotným systémem. Pro inspiraci je možné využít § 22 [vyhlášky č. 82/2018 Sb.](https://www.nukib.cz/download/publikace/legislativa/vkb_82-2018sb.pdf), který definuje typy událostí, o kterých by měl být proveden záznam:
+Aplikace zaznamenává důležité události provedené administrátory, uživateli nebo samotným systémem. Pro inspiraci je možné využít § 22 [vyhlášky č. 82/2018 Sb.][87], který definuje typy událostí, o kterých by měl být proveden záznam:
 
 1. přihlašování a odhlašování ke všem účtům, a to včetně neúspěšných pokusů,
 2. činnosti provedené administrátory,
@@ -541,3 +539,121 @@ Pokud jsou v jedné transakci měněny nebo přidávány hodnoty do více datab�
 
 ### D.6 Databázové schéma je komentováno
 Tabulky a sloupce jsou vhodně komentovány, aby byl jasný jejich význam a vazby na jiné tabulky.
+
+
+## Dokumentace a architektonické znalosti
+
+Následující je platné vše vždy, pokud se jedná o informační systém veřejné správy, respektive nějakou komponentu či část, která je využívána jako ISVS a podléhá tedy Zákonu 365/2000 a povinnostem plynoucích z Národní architektury. Nejedná-li se o část ISVS, i tak se autor snaží maximální počet následujících principů splnit.
+
+Veškeré programové vybavení a programové potředky, jež veřejná správa využívá pro podporu výkonu veřejné správy jsou regulovány mimo jiné i legislativou k informačním systémům veřejné správy. Platí tedy, že pokud jsou součástí “informačních systémů veřejné správy” nebo “egulovaných informačních systémů! I části vytvořená jako otevřené dle tohoto doporučení, musí jejich rozvojem a implementací příslušný úřad plnit také povinnosti k ISVS a řízení informatiky (viz Zákon č. 365/2000 Sb., o informačních systémech veřejné správy a jeho prováděcí dokumenty). Je tedy vhodné, aby již součástí dokumentace otevřeného kódu systému či jeho části, byly také příslušné části architektonické dokumentace, aby se tak úřadům usnadnilo plnění povinností k ISVS.
+
+### A1: K programu nebo jeho části je v dokumentace uvedena základní architektura
+
+Jednou z cástídokumentace je také architektura. Architektura obsahuje standardizovaný a dále zpracovatelný popis základních částí řešení a jejich vazeb. Architektura se skládá z elementů a jejich podrobností a jejich vazeb dle příslušnbých standardů. Architektura obsahuje vždy alespoň soupis všech komponent a rozhraní na aplikační vrstvě, obecný popis datových struktur na aplikační vrstvě  a všechny nutné platformy a technologie potřebné ke správnému běhu programu na technologické vrstvě. Je-lípou součástí i CI, měla by architektura obsahovat také příslušné prvky na implementační vrstvě. Je-lípou součástí také bezpečnostní Audit a oblast kybernetické bezpečnosti, měla by architektura obsahovat i příslušné prvky v bezpečnostní architektuře. 
+
+Architektonická dokumentace se vyvíjí a zpracovává odděleně od kódu, ale vlastník kódu musí vždy zajistit její aktuálnost.
+
+
+### A2: Architektura odpovídá povinnostem podle Národního architektonického rámce a Národního architektonického plánu
+
+Vzhledem k tomu, že architektonická dokumentace bude využívána orgány veřejné správy pro splnění povinností podle zákona, musí i samotná architektonická dokumentace odpovídat povinným standardům, které uvádí Národní architektonický rámec (pro jejich formu) a Národní architektonický plán (pro jejich obsah).
+
+Architektura se publikuje jako jeden architektonický model v datovém formátu Archimate XML a je zpracovává v architektonickém jazyce ArchiMate 3.0, nebo vyšším. Povinně obsahuje následující elementy: Na aplikační vrstvě elementy pro kompozici řešení, aplikačníkomponenty a aplač aplikační rozhraní (zejména rozhraní, která je možno využít k integraci), dále datové objekty reprezentující základní datové struktury údajů a jejich skupin, na technologické vrstvě pak všechny elementy systémového softwaru reprezentující potřebn technologie a platformy pro správný chod kódu. Není nutné zakreslovat na technologické vrstvě elementy potřebné pro vývoj a kompilování kódu. Architektoický model obsahuje také nezbytné vazby a pro každou vrstvu alespoň jeden pohled na úrovni L0 a libovolný počet pohledů na nižších úrovních detailu.
+
+### A3: V rámci architektury jsou zaneseny veškeré podpůrné platformy a technologie
+
+Veškeré potřebné platformy a technologie nutné pro správný běh kódu jsou zakresleny na technologické vrstvě architektury s vazbou na jednotlivé komponenty, kterým slouží. Cílem je, aby si potenciální uživatel kódu udělal představu o tom, co vše bude pro správné fungování kódu potřebovat připravit ve své infrastruktuře na softwarové úrovni. Není-li vyžadován žádný systémov software nebo technologická komponenta, uvede se tato informace v dokumentaci a v architektonickém modelu se uvede v popisu technologické vrstvy.
+
+### A4: Architektonická dokumentace je součástí dokumentace
+
+Pokud je pro daný program, či část, zpracovávána dokumentace podle souvisejících opatření, je její součástí i výše zmíněná architektonická dokumentace. V dokumentaci jsou přítomné diagramy důležitých architektonických pohledů a to vždy alespoň aplikační kompozice řešení a diagram znázorňující vyžadované systémové a podpůrné technologie a platformy. Dokumentace dále obsahuje odkaz na architektonický model s architekturou a informace o jeho aktuálnosti a případných nedokončených částech. Očekává se, že při významné změně řešení se příslušným způsobem upraví i architektonický model a dokumentace.
+
+[^1]:	Problematická je např. deserializace v jazyce PHP pomocí funkce [unserialize][65] nebo Java Native Serialization.
+
+[1]:	#organizacni-opatreni
+[2]:	#o-1
+[3]:	#o-2
+[4]:	#o-3
+[5]:	#o-4
+[6]:	#o-5
+[7]:	#o-6
+[8]:	#o-7
+[9]:	#o-8
+[10]:	#o-9
+[11]:	#o-10
+[12]:	#o-11
+[13]:	#sprava-kodu
+[14]:	#s-1
+[15]:	#s-2
+[16]:	#s-3
+[17]:	#s-4
+[18]:	#pouzite-knihovny
+[19]:	#d-1
+[20]:	#d-2
+[21]:	#d-3
+[22]:	#d-4
+[23]:	#d-5
+[24]:	#kontinualni-integrace
+[25]:	#ci-1
+[26]:	#ci-2
+[27]:	#ci-3
+[28]:	#ci-4
+[29]:	#ci-5
+[30]:	#ci-6
+[31]:	#ci-7
+[32]:	#ci-8
+[33]:	#kryptograficke-prostredky
+[34]:	#c-1
+[35]:	#c-2
+[36]:	#c-3
+[37]:	#c-4
+[38]:	#c-5
+[39]:	#c-6
+[40]:	#c-7
+[41]:	#c-8
+[42]:	#c-9
+[43]:	#zaznamy-o-udalostech
+[44]:	#l-1
+[45]:	#l-2
+[46]:	#l-3
+[47]:	#l-4
+[48]:	#l-5
+[49]:	#relacni-databaze
+[50]:	#d-1
+[51]:	#d-2
+[52]:	#d-3
+[53]:	#d-4
+[54]:	#d-5
+[55]:	#d-6
+[56]:	#d2-preferov%C3%A1ny-jsou-knihovny-s-bezpe%C4%8Dn%C3%BDm-api
+[57]:	https://securitytxt.org/
+[58]:	https://www.first.org/cvss/
+[59]:	https://www.cve.org
+[60]:	https://cveform.mitre.org/
+[61]:	#c2-jsou-vyu%C5%BE%C3%ADv%C3%A1ny-odoln%C3%A9-kryptografick%C3%A9-prost%C5%99edky
+[62]:	https://swagger.io/specification/
+[63]:	#o3-sou%C4%8D%C3%A1st%C3%AD-repozit%C3%A1%C5%99e-je-soubor-security
+[64]:	#kontinu%C3%A1ln%C3%AD-integrace
+[65]:	https://www.php.net/manual/en/function.unserialize.php
+[66]:	https://owasp.org/www-community/Fuzzing
+[67]:	https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+[68]:	https://github.com/fabpot/local-php-security-checker
+[69]:	https://pypi.org/project/safety/
+[70]:	https://github.com/rustsec/rustsec
+[71]:	https://github.com/thoughtworks/talisman
+[72]:	https://github.com/michenriksen/gitrob
+[73]:	#l1-aplikace-a-knihovny-vyu%C5%BE%C3%ADvaj%C3%AD-udr%C5%BEovan%C3%A9-z%C3%A1vislosti
+[74]:	https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf
+[75]:	https://badssl.com
+[76]:	https://datatracker.ietf.org/doc/html/rfc6698
+[77]:	https://datatracker.ietf.org/doc/html/rfc9106
+[78]:	https://datatracker.ietf.org/doc/html/rfc7914
+[79]:	https://datatracker.ietf.org/doc/html/rfc8018
+[80]:	#c2-jsou-vyu%C5%BE%C3%ADv%C3%A1ny-odoln%C3%A9-kryptografick%C3%A9-prost%C5%99edky
+[81]:	#c8-ke-generov%C3%A1n%C3%AD-n%C3%A1hodn%C3%BDch-token%C5%AF-jsou-pou%C5%BEity-kryptograficky-bezpe%C4%8Dn%C3%A9-pseudon%C3%A1hodn%C3%A9-gener%C3%A1tory
+[82]:	https://www.php.net/manual/en/function.hash-equals.php
+[83]:	https://docs.python.org/3/library/hmac.html#hmac.compare_digest
+[84]:	#c6-ulo%C5%BEen%C3%A1-hesla-jsou-odoln%C3%A1-proti-offline-%C3%BAtok%C5%AFm
+[85]:	https://www.php.net/manual/en/function.random-bytes.php
+[86]:	https://docs.python.org/3/library/secrets.html
+[87]:	https://www.nukib.cz/download/publikace/legislativa/vkb_82-2018sb.pdf
