@@ -480,7 +480,7 @@ Aplikace zaznamenává důležité události provedené administrátory, uživat
 Aplikace musí umožňovat napojení na centrální log management zasíláním strukturovaných informací vhodným obecně podporovaným standardem (např. syslog). Každý log záznam obsahuje minimálně následující informace (dle vyhlášky):
 
 1. datum a čas včetně specifikace časového pásma,
-2. typ činnosti (viz L.2),
+2. typ činnosti (viz [L.2](#l-2)),
 3. identifikaci technického aktiva, které činnost zaznamenalo (např. hostname a název aplikace),
 4. jednoznačnou identifikaci účtu, pod kterým byla činnost provedena,
 5. jednoznačnou síťovou identifikaci zařízení původce (např. IP adresa) a
