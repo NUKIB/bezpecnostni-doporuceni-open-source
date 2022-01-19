@@ -398,7 +398,7 @@ Při navazování zabezpečeného odchozího spojení, kde se používá k ově�
 Tyto kontroly jsou u většiny knihoven určených pro navazování zabezpečené komunikace zapnuty ve výchozím nastavení, vývojář by je proto měl vypínat pouze v odůvodněných případech pro konkrétní spojení. Pro ověření kontrol certifikátů je možné použít například službu [badssl](https://badssl.com).
 Pokud knihovna tyto kontroly nepodporuje, je potřeba ji vyměnit za bezpečnější nebo kontroly provádět dodatečně ve vlastním kódu.
 
-Kontrola revokace certifikátu (pomocí CRL nebo OCSP) je nepovinná (u většiny knihoven není tato kontrola podporována).
+Kontrola revokace certifikátu (pomocí CRL nebo OCSP) je povinná.
 
 Je taktéž možné použít jiný způsob ověření certifikátu, který zaručuje obdobnou nebo vyšší bezpečnost (např. pomocí protokolu [DANE](https://datatracker.ietf.org/doc/html/rfc6698) a DNSSEC nebo uvedení otisku certifikátu v konfiguračním souboru).
 
