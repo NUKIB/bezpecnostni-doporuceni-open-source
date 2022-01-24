@@ -23,6 +23,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
    9. [O.9: Dokumentace je součástí repozitáře](#o-9)
    10. [O.10: Pro knihovny: Zranitelné verze knihoven jsou označeny](#o-10)
    11. [O.11: Neudržované aplikace a knihovny jsou označeny](#o-11)
+   12. [O.12: Pro aplikace: Výchozí konfigurace je restriktivní](#o-12)
 2. [Správa kódu](#sprava-kodu)
    1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
    2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
@@ -191,6 +192,10 @@ Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a 
 je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
+
+### O.12 Pro aplikace: Výchozí konfigurace je restriktivní
+Konfigurace aplikace je nastavena tak, aby po instalaci omezovala potenciálně nebezpečné funkce a omezovala přístup k aplikaci – tedy například v případě webové aplikace naslouchala pouze na lokálním rozhraní (localhost) nebo neumožňovala připojení na nezabezpečené servery.
+Pokud aplikace při instalaci vytváří uživatelské účty, musí mít vygenerovány náhodné heslo, u kterého je vynucena změna po prvním přihlášení do systému.
 
 <a name="sprava-kodu"></a>
 
