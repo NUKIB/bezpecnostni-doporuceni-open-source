@@ -24,11 +24,12 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
    10. [O.10: Pro knihovny: Zranitelné verze knihoven jsou označeny](#o-10)
    11. [O.11: Neudržované aplikace a knihovny jsou označeny](#o-11)
    12. [O.12: Pro aplikace: Výchozí konfigurace je restriktivní](#o-12)
-2. [Správa kódu](#sprava-kodu)
+2. [Správa a tvorba kódu](#sprava-kodu)
    1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
    2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
    3. [S.3: Je prováděna kontrola kódu](#s-3)
    4. [S.4: Repozitář neobsahuje binární spustitelné soubory nebo kompilované kódy](#s-4)
+   5. [S.5 U dynamicky typovaných jazyků je využíváno striktní typování](#s-5)
 3. [Použité knihovny](#pouzite-knihovny)
    1. [D.1: Aplikace a knihovny využívají udržované závislosti](#d-1)
    2. [D.2: Preferovány jsou knihovny s bezpečným API](#d-2)
@@ -199,7 +200,7 @@ Pokud aplikace při instalaci vytváří uživatelské účty, musí mít vygene
 
 <a name="sprava-kodu"></a>
 
-## Správa kódu
+## Správa a tvorba kódu
 
 <a name="s-1"></a>
 
@@ -215,7 +216,7 @@ Do hlavní vývojové větve je umožněn kód začlenit, jen pokud byla kontinu
 
 <a name="s-3"></a>
 
-### S.3 Je prováděna kontrola kódu
+### S.3 Je prováděna kontrola změn kódu
 V případě knihoven nebo aplikací, na jejichž vývoji se podílí více vývojářů, požadavky na začlenění kódu, které mohou mít vliv na bezpečnost systému, podléhají kontrolou a schválení jiným vývojářem.
 
 Pokud je umožněno do kódu přispívat vývojářům z řad veřejnosti, v případě požadavku na začlenění kódu od neznámého vývojáře je tato kontrola prováděna vždy.
@@ -224,6 +225,33 @@ Pokud je umožněno do kódu přispívat vývojářům z řad veřejnosti, v př
 
 ### S.4 Repozitář neobsahuje binární spustitelné soubory nebo kompilované kódy
 Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustitelných souborech (včetně zkompilovaných knihoven) umístěných v repozitáři. Pokud je to nezbytné, je k tomuto zkompilovaném souboru alespoň přidán popis, odkud byl soubor získán nebo jak je možné jej sestavit.
+
+<a name="s-5"></a>
+
+### S.5 U dynamicky typovaných jazyků je využíváno striktní typování
+U některých dynamicky typovaných jazyků může představovat dynamické typování nepředvitelné chování a vést k bezpečnostím zranitelnostem. Pokud to využitý jazyk umožňuje, všechny funkce mají definované typy vstupních a výstupních parametrů. Některé programovací jazyky umožňují typovou kontrolu provádět za běhu nebo externím nástrojem v rámci CI.
+
+Příklad problematického chování v jazyce PHP:
+
+```php
+<?php
+function verifyPassword($a, $b) {
+   return $a == $b;
+}
+var_dump(verifyPassword("ahoj", "ahoj")); // bool(true)
+var_dump(verifyPassword("ahoj", true)); // bool(true)
+```
+
+S využitím striktního typování:
+```php
+<?php
+declare(strict_types=1);
+function verifyPassword(string $a, string $b) -> bool {
+   return $a == $b;
+}
+var_dump(verifyPassword("ahoj", "ahoj")); // bool(true)
+var_dump(verifyPassword("ahoj", true)); // PHP Fatal error:  Uncaught TypeError: verifyPassword(): Argument #2 ($b) must be of type string, bool given
+```
 
 <a name="pouzite-knihovny"></a>
 
