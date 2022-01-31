@@ -24,7 +24,7 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
    10. [O.10: Pro knihovny: Zranitelné verze knihoven jsou označeny](#o-10)
    11. [O.11: Neudržované aplikace a knihovny jsou označeny](#o-11)
    12. [O.12: Pro aplikace: Výchozí konfigurace je restriktivní](#o-12)
-2. [Správa kódu](#sprava-kodu)
+2. [Správa a tvorba kódu](#sprava-kodu)
    1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
    2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
    3. [S.3: Je prováděna kontrola kódu](#s-3)
