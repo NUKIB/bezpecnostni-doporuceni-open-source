@@ -23,11 +23,12 @@ Tento dokument je určen vývojářům a osobám zabývajícím se kybernetickou
    9. [O.9: Dokumentace je součástí repozitáře](#o-9)
    10. [O.10: Pro knihovny: Zranitelné verze knihoven jsou označeny](#o-10)
    11. [O.11: Neudržované aplikace a knihovny jsou označeny](#o-11)
-2. [Správa a tvorba kódu](#sprava-kodu)
+   12. [O.12: Pro aplikace: Výchozí konfigurace je restriktivní](#o-12)
+2. [Správa kódu](#sprava-kodu)
    1. [S.1: Zdrojový kód je verzován (VCS) a zveřejněn v otevřeném repozitáři](#s-1)
    2. [S.2: Pro vývoj se používají oddělené větve, které se následně slučují do hlavní vývojové větve](#s-2)
-   3. [S.3: Je prováděna kontrola změn kódu](#s-3)
-   4. [S.4: Repozitář neobsahuje binární spustitelné soubory](#s-4)
+   3. [S.3: Je prováděna kontrola kódu](#s-3)
+   4. [S.4: Repozitář neobsahuje binární spustitelné soubory nebo kompilované kódy](#s-4)
    5. [S.5 U dynamicky typovaných jazyků je využíváno striktní typování](#s-5)
 3. [Použité knihovny](#pouzite-knihovny)
    1. [D.1: Aplikace a knihovny využívají udržované závislosti](#d-1)
@@ -93,7 +94,7 @@ Pokud nelze zdrojový kód zveřejnit už od začátku vývoje, vývojáři při
 ### O.3 Součástí repozitáře je soubor SECURITY
 Soubor SECURITY obsažený v repozitáři je standardní způsob, jak informovat uživatele a bezpečnostní analytiky, jakým mají být hlášeny bezpečnostní chyby. Pro hlášení musí být využit neveřejný kanál (doporučujeme využít buď neveřejné issues v rámci nástroje pro sdílení kódu nebo e-mailový kontakt se zveřejněným veřejným PGP klíčem).
 V případě e-mailu by se mělo jednat o ne-jmenný kontakt (například `security@organizace.cz`) pro zajištění funkčnosti i v případě změny pracovníků. Soubor taktéž může obsahovat další informace, jako např. jaké verze jsou podporované a plánovanou dobu podpory. Tyto informace jsou uvedeny v anglickém jazyce, volitelně doplněné českou alternativou.
-Cílem opatření je zvýšit pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byli zveřejněny nebo zneužity.
+Cílem opatření je zvýšit pravděpodobnost, že zranitelnost bude nahlášena tvůrci kódu, než aby informace o ní byly zveřejněny nebo zneužity.
 
 Příklad souboru SECURITY:
 
@@ -149,7 +150,7 @@ Všechny zranitelnosti nahlášené i nalezené, např. interním penetračním 
 
 Pro závažné zranitelnosti (CVSS 7.0 a vyšší) je přiřazen kód [CVE](https://www.cve.org). Kód CVE je uveden v souboru se změnami.
 
-Kód CVE je globálně používaný unikátní indikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento indikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na [cveform.mitre.org](https://cveform.mitre.org/).
+Kód CVE je globálně používaný unikátní identifikátor zranitelnosti spravovaný americkou neziskovou organizací MITRE. Výhodou je, že se podle tohoto kódu dá vyhledat o jakou zranitelnost se jedná a uživatelé aplikace nebo knihovny mohou tento identifikátor používat pro odkazování na konkrétní zranitelnost. Pro přiřazení CVE pro open-source projekty je možné využít formulář na [cveform.mitre.org](https://cveform.mitre.org/).
 
 <a name="o-7"></a>
 
@@ -193,6 +194,10 @@ je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí 
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
 
+### O.12 Pro aplikace: Výchozí konfigurace je restriktivní
+Konfigurace aplikace je nastavena tak, aby po instalaci omezovala potenciálně nebezpečné funkce a omezovala přístup k aplikaci – tedy například v případě webové aplikace naslouchala pouze na lokálním rozhraní (localhost) nebo neumožňovala připojení na nezabezpečené servery.
+Pokud aplikace při instalaci vytváří uživatelské účty, musí mít vygenerovány náhodné heslo, u kterého je vynucena změna po prvním přihlášení do systému.
+
 <a name="sprava-kodu"></a>
 
 ## Správa a tvorba kódu
@@ -218,8 +223,8 @@ Pokud je umožněno do kódu přispívat vývojářům z řad veřejnosti, v př
 
 <a name="s-4"></a>
 
-### S.4 Repozitář neobsahuje binární spustitelné soubory
-Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustitelných souborech (včetně zkompilovaných knihoven) umístěných v repozitáři. Pokud je to nezbytné, je k tomuto souboru alespoň přidán popis, odkud byl soubor získán nebo jak je možné jej sestavit.
+### S.4 Repozitář neobsahuje binární spustitelné soubory nebo kompilované kódy
+Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustitelných souborech (včetně zkompilovaných knihoven) umístěných v repozitáři. Pokud je to nezbytné, je k tomuto zkompilovaném souboru alespoň přidán popis, odkud byl soubor získán nebo jak je možné jej sestavit.
 
 <a name="s-5"></a>
 
@@ -508,7 +513,7 @@ Aplikace zaznamenává důležité události provedené administrátory, uživat
 Aplikace musí umožňovat napojení na centrální log management zasíláním strukturovaných informací vhodným obecně podporovaným standardem (např. syslog). Každý log záznam obsahuje minimálně následující informace (dle vyhlášky):
 
 1. datum a čas včetně specifikace časového pásma,
-2. typ činnosti (viz L.2),
+2. typ činnosti (viz [L.2](#l-2)),
 3. identifikaci technického aktiva, které činnost zaznamenalo (např. hostname a název aplikace),
 4. jednoznačnou identifikaci účtu, pod kterým byla činnost provedena,
 5. jednoznačnou síťovou identifikaci zařízení původce (např. IP adresa) a
