@@ -246,7 +246,7 @@ S využitím striktního typování:
 ```php
 <?php
 declare(strict_types=1);
-function verifyPassword(string $a, string $b) -> bool {
+function verifyPassword(string $a, string $b): bool {
    return $a == $b;
 }
 var_dump(verifyPassword("ahoj", "ahoj")); // bool(true)
