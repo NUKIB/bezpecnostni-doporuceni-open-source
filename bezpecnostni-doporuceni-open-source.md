@@ -135,13 +135,13 @@ V rámci organizace spravující zdrojový kód v repozitáři je určena odpov�
 
 <a name="o-5"></a>
 
-### O.5 Nahlášené zranitelnosti jsou opraveny do 30 dnů
-Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 30 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace.
+### O.5 Nahlášené zranitelnosti jsou opraveny do 90 dnů
+Všechny nalezené a nahlášené zranitelnosti musí být opraveny do 90 dnů, včetně vydání nové verze opravující tuto chybu. Lhůta může být prodloužena v případě zranitelností, které vyžadují např. změnu architektury aplikace.
 U nahlášené zranitelnosti externím subjektem tak ale může být učiněno pouze po domluvě s nahlašovatelem zranitelnosti – bezpečnostní výzkumníci obvykle informaci o zranitelnosti zveřejní, pokud není opravena do předem domluvené doby.
 
 V případě kritické zranitelnosti (např. RCE zneužitelné bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
-Pokud je kritická zranitelnost zveřejněna před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti) nebo je zneužití zranitelnosti primitivní, musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
+Pokud jsou informace o kritická zranitelnosti zveřejněny před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti), zneužití zranitelnosti je primitivní nebo je zranitelnost aktivně zneužívána, musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
 
 <a name="o-6"></a>
 
