@@ -141,7 +141,8 @@ U nahlášené zranitelnosti externím subjektem tak ale může být učiněno p
 
 V případě kritické zranitelnosti (např. RCE zneužitelné bez potřeby autentizace, [CVSS](https://www.first.org/cvss/) vyšší než 9.0) by měla být oprava do kódu začleněna v rámci hodin před vydáním nové verze. Zveřejnění opravy dává útočníkovi informaci, ve které části aplikace je zranitelnost obsažena a zjednodušuje její zneužití.
 
-Pokud jsou informace o kritická zranitelnosti zveřejněny před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti), zneužití zranitelnosti je primitivní nebo je zranitelnost aktivně zneužívána, musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které využití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
+Pokud jsou informace o kritické zranitelnosti zveřejněny před jejím nahlášením včetně PoC („proof of concept exploit”, tedy funkční ukázky zneužití zranitelnosti), zneužití zranitelnosti je primitivní nebo je zranitelnost aktivně zneužívána,
+musí být opravena co možná nejdříve či alespoň zveřejněna jiná opatření, které zneužití zranitelnosti minimalizují (tzv. workaround, např. vypnutí problematické části aplikace).
 
 <a name="o-6"></a>
 
