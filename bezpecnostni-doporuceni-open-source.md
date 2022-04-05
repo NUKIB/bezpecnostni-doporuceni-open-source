@@ -190,7 +190,7 @@ Pokud je knihovna zveřejněna ve veřejném správci balíčků, verze obsahuj�
 <a name="o-11"></a>
 
 ### O.11 Neudržované aplikace a knihovny jsou označeny
-Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá),
+Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována, a tedy organizace již nebude reagovat na nahlášené zranitelnosti (např. v případě, kdy organizace tuto aplikaci nebo knihovnu už dále nevyužívá),
 je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
@@ -230,7 +230,7 @@ Aplikace, knihovna ani proces jejich sestavení by neměl záviset na spustiteln
 <a name="s-5"></a>
 
 ### S.5 U dynamicky typovaných jazyků je využíváno striktní typování
-U některých dynamicky typovaných jazyků může představovat dynamické typování nepředvitelné chování a vést k bezpečnostím zranitelnostem. Pokud to využitý jazyk umožňuje, všechny funkce mají definované typy vstupních a výstupních parametrů. Některé programovací jazyky umožňují typovou kontrolu provádět za běhu nebo externím nástrojem v rámci CI.
+U některých dynamicky typovaných jazyků může představovat dynamické typování nepředvídatelné chování a vést k bezpečnostním zranitelnostem. Pokud to využitý jazyk umožňuje, všechny funkce mají definované typy vstupních a výstupních parametrů. Některé programovací jazyky umožňují typovou kontrolu provádět za běhu nebo externím nástrojem v rámci CI.
 
 Příklad problematického chování v jazyce PHP:
 
