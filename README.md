@@ -12,12 +12,12 @@
 
 *Doporučení není pro veřejnou správu právně závazné a nenahrazuje požadavky zákona o kybernetické bezpečnosti.*
 
-* **[Doporučení v0.1](bezpecnostni-doporuceni-open-source.md)**
+* **[Doporučení v1.0](bezpecnostni-doporuceni-open-source.md)**
 
 ## Jak přispívat
 
-V současné době zveřejněná verze ještě není finální, ale je  připravena k připomínkám veřejné správy, dodavatelů softwaru pro veřejnou správu a odborné veřejnosti.
-Připomínky k doporučení můžete přidávat pomocí [Issues](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/issues) nebo přímo návrhem změny doporučení pomocí [Pull requestu](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/edit/main/bezpecnostni-doporuceni-open-source.md) a to do 31. ledna 2022. Vydání finální verze doporučení je plánováno v březnu 2022.
+Zveřejněná verze je ve verzi 1.0, ale je stále je připravena k připomínkám veřejné správy, dodavatelů softwaru pro veřejnou správu a odborné veřejnosti.
+Připomínky k doporučení můžete přidávat pomocí [Issues](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/issues) nebo přímo návrhem změny doporučení pomocí [Pull requestu](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/edit/main/bezpecnostni-doporuceni-open-source.md).
 
 ### Obecná pravidla dokumentu
 
