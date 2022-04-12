@@ -16,7 +16,7 @@
 
 ## Jak přispívat
 
-Zveřejněná verze je ve verzi 1.0, ale je stále je připravena k připomínkám veřejné správy, dodavatelů softwaru pro veřejnou správu a odborné veřejnosti.
+Zveřejněné doporučení je ve verzi 1.0, ale je stále připraveno k připomínkám veřejné správy, dodavatelů softwaru pro veřejnou správu a odborné veřejnosti.
 Připomínky k doporučení můžete přidávat pomocí [Issues](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/issues) nebo přímo návrhem změny doporučení pomocí [Pull requestu](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/edit/main/bezpecnostni-doporuceni-open-source.md).
 
 ### Obecná pravidla dokumentu
