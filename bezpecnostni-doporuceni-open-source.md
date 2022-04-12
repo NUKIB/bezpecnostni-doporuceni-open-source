@@ -1,6 +1,6 @@
 # Bezpečnostní doporučení pro vývoj otevřeného softwaru ve veřejné správě
 
-*Verze: 0.1*
+*Verze: 1.0*
 
 Software s otevřeným kódem přináší určité bezpečnostní výhody. Hůře se v něm skrývají záměrná „zadní vrátka“. Kód může procházet více bezpečnostních analytiků, a tak odhalit i méně zjevné zranitelnosti. Tvůrci otevřeného kódu si obvykle dávají více záležet na jeho kvalitě z důvodu možného reputačního rizika.
 
