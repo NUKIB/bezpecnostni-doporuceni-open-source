@@ -12,7 +12,7 @@
 
 *Doporučení není pro veřejnou správu právně závazné a nenahrazuje požadavky zákona o kybernetické bezpečnosti.*
 
-* **[Doporučení v1.0](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/blob/v1.0/bezpecnostni-doporuceni-open-source.md)**
+* **[Doporučení v1.0](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/blob/v1.0/bezpecnostni-doporuceni-open-source.md)** (**[ve formátu PDF](https://github.com/NUKIB/bezpecnostni-doporuceni-open-source/releases/download/v1.0/2022-04-05-doporuceni_open_source.pdf)**)
 * **[Doporučení (vývojová verze)](bezpecnostni-doporuceni-open-source.md)**
 
 ## Jak přispívat
