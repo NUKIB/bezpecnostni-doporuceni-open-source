@@ -1,6 +1,6 @@
 # Bezpečnostní doporučení pro vývoj otevřeného softwaru ve veřejné správě
 
-*Verze: 1.0*
+*Verze: main*
 
 Software s otevřeným kódem přináší určité bezpečnostní výhody. Hůře se v něm skrývají záměrná „zadní vrátka“. Kód může procházet více bezpečnostních analytiků, a tak odhalit i méně zjevné zranitelnosti. Tvůrci otevřeného kódu si obvykle dávají více záležet na jeho kvalitě z důvodu možného reputačního rizika.
 
@@ -116,7 +116,7 @@ V případě bezpečnostní zranitelnosti nás prosím přímo kontaktujte …, 
 Pokud hlásíte bezpečnostní zranitelnost, nezapomeňte uvést, jak chcete být zveřejněni v changelogu a zda jste již požádali o přidělení CVE. Pokud ne, zažádáme o přidělení CVE za vás.
 ```
 
-V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu uvedeného na [securitytxt.org](https://securitytxt.org/), který si každý správce může nahradit vlastním obsahem.
+V případě webové aplikace výchozí instalace aplikace obsahuje taktéž soubor `.well-known/security.txt` obsahující informace dle standardu  [RFC 9116](https://datatracker.ietf.org/doc/html/rfc9116), který si každý správce může nahradit vlastním obsahem.
 
 Příklad souboru `security.txt`:
 
@@ -194,6 +194,8 @@ Pokud je aplikace nebo knihovna ze strany organizace již dále neudržována, a
 je repozitář se zdrojovým kódem označen jako neudržovaný (např. funkcí správce kódu, v popisu repozitáře nebo v souboru README) a zároveň je tato informace uvedena i v souboru SECURITY (viz [O.3](#o3-součástí-repozitáře-je-soubor-security)).
 
 Pokud se jedná o knihovnu zveřejněnou ve správci balíčků, je knihovna takto označena i v tomto správci.
+
+<a name="o-12"></a>
 
 ### O.12 Pro aplikace: Výchozí konfigurace je restriktivní
 Konfigurace aplikace je nastavena tak, aby po instalaci omezovala potenciálně nebezpečné funkce a omezovala přístup k aplikaci – tedy například v případě webové aplikace naslouchala pouze na lokálním rozhraní (localhost) nebo neumožňovala připojení na nezabezpečené servery.
