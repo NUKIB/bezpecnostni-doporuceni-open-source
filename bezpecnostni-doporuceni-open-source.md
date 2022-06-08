@@ -413,7 +413,7 @@ Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u k
 ### C.2 Jsou využívány odolné kryptografické prostředky
 V případě, že aplikace nebo knihovna přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné.
 
-Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/uredni_deska/Kryptograficke_prostredky_doporuceni_v1.0.pdf) vydávaných NÚKIB.
+Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/publikace/podpurne_materialy/Kryptograficke_prostredky_doporuceni_v2.0.pdf) vydávaných NÚKIB.
 Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu, a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
 
 Jiný algoritmus může být použit jen v nezbytných případech (např. kvůli zpětné kompatibilitě nebo komunikaci s jiným systémem nepodporující odolný algoritmus).
@@ -449,7 +449,6 @@ Pokud aplikace pracuje s uživatelskými hesly nebo jinými autentizačními úd
 V případě, že není potřeba pracovat s originálním údajem, doporučujeme k jejich zahašování využít jeden z následujících algoritmů (v pořadí od nejvhodnějšího):
 * [Argon2](https://datatracker.ietf.org/doc/html/rfc9106) (nejlépe ve verzi „id”) – využívá hašovací algoritmus BLAKE2, který je schválen
 * [scrypt](https://datatracker.ietf.org/doc/html/rfc7914) – využívá hašovací algoritmus SHA-256, který je schválen
-* bcrypt – využívá blokovou šifru blowfish, která je dosluhující
 * [PBKDF2](https://datatracker.ietf.org/doc/html/rfc8018) – umožňuje volbu hašovací algoritmu, doporučujeme využití schváleného hašovací algoritmu dle [C.2](#c2-jsou-využívány-odolné-kryptografické-prostředky)
 
 Sůl („salt”) musí být generována pomocí k tomu určenému algoritmu (viz [C.8](#c8-ke-generování-náhodných-tokenů-jsou-použity-kryptograficky-bezpečné-pseudonáhodné-generátory)), doporučujeme zvolit sůl minimálně o velikosti 64 bitů (lépe 128 bitů).
