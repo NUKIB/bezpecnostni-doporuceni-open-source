@@ -413,7 +413,7 @@ Pokud je nutné vytvářet implementace vlastních algoritmů, v komentáři u k
 ### C.2 Jsou využívány odolné kryptografické prostředky
 V případě, že aplikace nebo knihovna přímo definuje použité kryptografické prostředky, musí využívat jen ty aktuálně odolné.
 
-Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://www.nukib.cz/download/publikace/podpurne_materialy/Kryptograficke_prostredky_doporuceni_v2.0.pdf) vydávaných NÚKIB.
+Pro výběr vhodných kryptografických algoritmů je možné využít [Doporučení v oblasti kryptografických prostředků](https://nukib.gov.cz/download/publikace/podpurne_materialy/Minimalni%20pozadavky%20na%20kryptograficke%20algoritmy.pdf) vydávaných NÚKIB.
 Tento dokument rozlišuje dvě kategorie algoritmů: schválené, které jsou bezpečné alespoň ve střednědobém horizontu, a dosluhující, které by se měly přestat používat po roce 2023 a nezavádět se v nových systémech.
 
 Jiný algoritmus může být použit jen v nezbytných případech (např. kvůli zpětné kompatibilitě nebo komunikaci s jiným systémem nepodporující odolný algoritmus).
@@ -496,7 +496,7 @@ Knihovny využívají standardní rozhraní pro zaznamenávání událostí dle 
 <a name="l-2"></a>
 
 ### L.2 Pro aplikace: Aplikace umožňuje logování důležitých akcí
-Aplikace zaznamenává důležité události provedené administrátory, uživateli nebo samotným systémem. Pro inspiraci je možné využít § 22 [vyhlášky č. 82/2018 Sb.](https://www.nukib.cz/download/publikace/legislativa/vkb_82-2018sb.pdf), který definuje typy událostí, o kterých by měl být proveden záznam:
+Aplikace zaznamenává důležité události provedené administrátory, uživateli nebo samotným systémem. Pro inspiraci je možné využít [§ 22 vyhlášky č. 82/2018 Sb.](https://www.e-sbirka.cz/sb/2018/82#par_22), který definuje typy událostí, o kterých by měl být proveden záznam:
 
 1. přihlašování a odhlašování ke všem účtům, a to včetně neúspěšných pokusů,
 2. činnosti provedené administrátory,
