@@ -121,11 +121,11 @@ V případě webové aplikace výchozí instalace aplikace obsahuje taktéž sou
 Příklad souboru `security.txt`:
 
 ```text
-Contact: mailto:cert@nukib.cz
-Expires: 2023-01-01T00:00:00.000Z
-Encryption: https://www.nukib.cz/download/kontakty/cert_pub.asc
+Contact: mailto:cert@nukib.gov.cz
+Expires: 2024-01-01T00:00:00.000Z
+Encryption: https://nukib.gov.cz/download/kontakty/cert_pub.asc
 Preferred-Languages: cs, sk, en
-Hiring: https://kariera.nukib.cz/
+Hiring: https://kariera.nukib.gov.cz/
 ```
 
 <a name="o-4"></a>
